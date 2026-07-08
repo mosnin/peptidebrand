@@ -7,10 +7,11 @@ import { StickyMobileCTA } from '@/components/StickyMobileCTA';
 import { SEOJsonLd } from '@/components/SEOJsonLd';
 import { createMetadata, organizationSchema, websiteSchema } from '@/lib/seo';
 import { professionalServiceSchema } from '@/lib/schema';
+import { siteConfig } from '@/lib/site';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
 
-export const metadata: Metadata = createMetadata({ title: 'PeptideBrand' });
+export const metadata: Metadata = createMetadata({ title: siteConfig.name });
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const professionalService = professionalServiceSchema();

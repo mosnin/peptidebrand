@@ -4,7 +4,7 @@ import { Section } from '@/components/Section';
 import { createMetadata } from '@/lib/seo';
 import { researchDisclaimer } from '@/lib/site';
 
-export const metadata: Metadata = createMetadata({ title: 'Compliance', path: '/compliance', description: 'PeptideBrand compliance stance for research-use-only peptide sourcing and white label information.' });
+export const metadata: Metadata = createMetadata({ title: 'Compliance', path: '/compliance', description: 'Peptide Brand compliance stance for research-use-only peptide sourcing and white label information.' });
 export default function CompliancePage() { return <Section>
 <Container>
 <h1 className="text-4xl font-black text-navy">Compliance stance</h1>

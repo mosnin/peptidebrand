@@ -4,7 +4,7 @@ import { LeadForm } from '@/components/LeadForm';
 import { Section } from '@/components/Section';
 import { createMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = createMetadata({ title: 'Contact', path: '/contact', description: 'Contact PeptideBrand about research-use peptide sourcing, white label support, COA workflows, testing documentation, packaging, and fulfillment.' });
+export const metadata: Metadata = createMetadata({ title: 'Contact', path: '/contact', description: 'Contact Peptide Brand about research-use peptide sourcing, white label support, COA workflows, testing documentation, packaging, and fulfillment.' });
 
 export default function ContactPage() {
   return (

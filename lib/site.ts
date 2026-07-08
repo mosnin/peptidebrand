@@ -1,8 +1,8 @@
 export const siteConfig = {
-  name: 'PeptideBrand',
+  name: 'Peptide Brand',
   url: 'https://peptidebrand.com',
   description:
-    'Research-use-only peptide brand launch resources for wholesale sourcing, white label support, lab testing, COAs, fulfillment, and compliant operations.',
+    'USA-based, lab-created research peptide sourcing and white label brand creation. Free 1-on-1 consultations, 99%+ purity, and a network of hundreds of vetted American manufacturers.',
   email: 'hello@peptidebrand.com',
   publicLocation: null as null | { streetAddress: string; addressLocality: string; addressRegion: string; postalCode: string; addressCountry: string },
 };

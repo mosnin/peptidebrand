@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { Container } from '@/components/Container';
 import { CTASection } from '@/components/CTASection';
@@ -9,6 +10,7 @@ import { PageHero } from '@/components/PageHero';
 import { RelatedLinks } from '@/components/RelatedLinks';
 import { SEOJsonLd } from '@/components/SEOJsonLd';
 import { Section } from '@/components/Section';
+import { brandAssets } from '@/lib/assets';
 import { breadcrumbSchema, faqSchema, serviceSchema } from '@/lib/schema';
 import { getServicePageDetail, researchUseDisclaimer } from '@/lib/service-page-details';
 import type { SEOPage } from '@/lib/seo-page-map';
@@ -20,9 +22,20 @@ function formVariantForSlug(slug: string): LeadFormVariant {
   return 'quote';
 }
 
+const contextImageBySlug: Record<string, { src: string; alt: string }> = {
+  'white-label-peptides': { src: brandAssets.whiteLabelInventory, alt: 'White label peptide packaging, boxes, and vials ready for brand creation' },
+  'private-label-peptides': { src: brandAssets.whiteLabelInventory, alt: 'Private label peptide packaging and custom labels ready for launch' },
+  'peptide-packaging': { src: brandAssets.whiteLabelInventory, alt: 'Custom peptide packaging, labels, and lot codes staged for fulfillment' },
+  'wholesale-peptides': { src: brandAssets.vialsColdStorage, alt: 'Rows of research peptide vials in cold storage at a USA-based manufacturing facility' },
+  'research-peptide-supplier': { src: brandAssets.vialsColdStorage, alt: 'USA-based manufacturer cold storage inventory of research peptide vials' },
+  'peptide-lab-testing': { src: brandAssets.hplcInterface, alt: 'HPLC analysis dashboard confirming 99.12 percent research peptide purity with a pass result' },
+  'peptide-coa-testing': { src: brandAssets.coaStack, alt: 'Certificate of analysis showing 99.7 percent peptide purity results from independent lab testing' },
+};
+
 export function ServicePageTemplate({ page }: { page: SEOPage }) {
   const detail = getServicePageDetail(page.slug);
   const formVariant = formVariantForSlug(page.slug);
+  const contextImage = contextImageBySlug[page.slug];
 
   return (
     <>
@@ -40,6 +53,11 @@ export function ServicePageTemplate({ page }: { page: SEOPage }) {
               <p className="text-sm font-bold uppercase tracking-[0.25em] text-teal">Commercial overview</p>
               <h2 className="mt-3 text-3xl font-black text-navy">A practical service page for {page.targetKeyword} decisions</h2>
               <p className="mt-4 text-lg leading-8 text-slate-600">{page.intro}</p>
+              {contextImage && (
+                <div className="mt-6 overflow-hidden rounded-3xl border border-slate-200 shadow-soft">
+                  <Image src={contextImage.src} alt={contextImage.alt} width={1200} height={800} className="h-auto w-full object-cover" />
+                </div>
+              )}
             </section>
 
             {detail && (
