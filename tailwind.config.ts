@@ -18,7 +18,7 @@ const config: Config = {
         line: 'rgba(215, 180, 106, 0.24)',
       },
       fontFamily: {
-        sans: ['var(--font-lora)', 'ui-serif', 'Georgia', 'serif'],
+        sans: ['var(--font-source-sans)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         display: ['var(--font-display)', 'Georgia', 'Cambria', 'serif'],
       },
       backgroundImage: {

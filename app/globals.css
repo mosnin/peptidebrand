@@ -5,7 +5,7 @@
 :root { color-scheme: dark; --radius: 1.5rem; --font-display: var(--font-cormorant), Georgia, Cambria, serif; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; background: #030712; }
-body { margin: 0; background: #030712; color: #e5eef8; font-family: var(--font-lora), ui-serif, Georgia, serif; }
+body { margin: 0; background: #030712; color: #e5eef8; font-family: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif; }
 a { text-decoration: none; }
 ::selection { background: #d7b46a; color: #030712; }
 
