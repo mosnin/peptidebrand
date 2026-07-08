@@ -7,9 +7,9 @@ import type { SEOPage } from '@/lib/seo-page-map';
 
 export function PageHero({ page, eyebrow }: { page: SEOPage; eyebrow: string }) {
   return (
-    <section className="relative overflow-hidden bg-navy py-16 text-white sm:py-24">
-      <Image src={brandAssets.molecularMap} alt="" fill priority sizes="100vw" className="object-cover opacity-60" />
-      <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/40" />
+    <section className="relative overflow-hidden bg-midnight py-16 text-white sm:py-24">
+      <Image src={brandAssets.molecularMap} alt="" fill priority sizes="100vw" className="object-cover opacity-25" />
+      <div className="absolute inset-0 bg-gradient-to-r from-midnight via-navy/95 to-midnight/85" />
       <Container className="relative grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <div>
           <p className="text-sm font-bold uppercase tracking-[0.3em] text-cyan">{eyebrow}</p>

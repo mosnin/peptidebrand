@@ -64,9 +64,9 @@ export default function HomePage() {
   return (
     <>
       <SEOJsonLd data={[organizationSchema(), websiteSchema(), faqSchema(faqItems)]} />
-      <section className="relative overflow-hidden bg-navy text-white">
-        <Image src={brandAssets.heroScientists} alt="USA-based laboratory preparing research peptide vials for testing and quality verification" fill priority sizes="100vw" className="object-cover opacity-45" />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/60" />
+      <section className="relative overflow-hidden bg-midnight text-white">
+        <Image src={brandAssets.heroScientists} alt="USA-based laboratory preparing research peptide vials for testing and quality verification" fill priority sizes="100vw" className="object-cover opacity-25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-midnight via-navy/95 to-midnight/85" />
         <Container className="relative grid gap-12 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:py-28">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.3em] text-cyan">USA-based • Lab-created • 100% free consultations</p>

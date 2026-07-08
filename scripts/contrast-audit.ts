@@ -5,6 +5,7 @@ const { join } = require('node:path');
 const sourceGlobs = ['app/**/*.tsx', 'components/**/*.tsx'];
 const tokens = ['white', 'black', 'navy', 'midnight', 'ink', 'mist', 'cyan', 'teal', 'blue', 'gold'];
 const riskyPairs = tokens.map((token: string) => ({ bg: `bg-${token}`, text: `text-${token}` }));
+const mutedTextTokens = ['text-white/50', 'text-white/60', 'text-white/70', 'text-white/75', 'text-white/80', 'text-white/85', 'text-slate-500', 'text-slate-600'];
 
 function listFiles(): string[] {
   return sourceGlobs.flatMap((glob) =>
@@ -28,6 +29,12 @@ for (const file of listFiles()) {
     // Keep this audit focused on literal class strings it can evaluate reliably.
     if (className.includes('${')) continue;
 
+    for (const mutedToken of mutedTextTokens) {
+      if (exactClassToken(className, mutedToken)) {
+        findings.push(`${file}: avoid low-contrast ${mutedToken} in className: ${className}`);
+      }
+    }
+
     for (const pair of riskyPairs) {
       if (exactClassToken(className, pair.bg) && exactClassToken(className, pair.text)) {
         findings.push(`${file}: avoid ${pair.text} on ${pair.bg} in className: ${className}`);
@@ -42,4 +49,4 @@ if (findings.length > 0) {
   process.exit(1);
 }
 
-console.log('Contrast audit passed: no exact same-token background/text combinations found.');
+console.log('Contrast audit passed: no exact same-token or muted text utility findings found.');
