@@ -12,7 +12,7 @@ export function COADocumentCard() {
         <div className="mt-5 grid gap-3">
           {['Lot identifier', 'Supplier documentation', 'HPLC reference', 'LCMS reference', 'Label version'].map((item, index) => (
             <div key={item} className="flex items-center justify-between rounded-2xl bg-midnight/70 px-4 py-3">
-              <span className="text-sm text-white/70">{item}</span>
+              <span className="text-sm text-slate-100">{item}</span>
               <span className="font-mono text-xs text-cyan">0{index + 1}</span>
             </div>
           ))}

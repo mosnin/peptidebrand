@@ -13,7 +13,7 @@ export default function QuotePage() {
         <div>
           <p className="text-sm font-bold uppercase tracking-[0.3em] text-teal">Lead capture</p>
           <h1 className="mt-3 text-4xl font-black text-navy">Request wholesale or white label support</h1>
-          <p className="mt-4 text-slate-600">Use this form for laboratory research-use brand launch needs, sourcing, COA workflows, packaging, testing coordination, and fulfillment planning.</p>
+          <p className="mt-4 text-slate-700">Use this form for laboratory research-use brand launch needs, sourcing, COA workflows, packaging, testing coordination, and fulfillment planning.</p>
         </div>
         <LeadForm variant="quote" />
       </Container>

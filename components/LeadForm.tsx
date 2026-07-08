@@ -160,7 +160,7 @@ export function LeadForm({ variant = 'quote', dark = false }: { variant?: LeadFo
       <p className="hidden"><label htmlFor={`${id}-honeypot`}>Do not fill this out<input id={`${id}-honeypot`} name="honeypot" tabIndex={-1} autoComplete="off" /></label></p>
       <div>
         <h2 className={`font-display text-3xl font-bold ${dark ? 'text-white' : 'text-navy'}`}>{config.title}</h2>
-        <p className={`mt-2 text-sm ${dark ? 'text-white/70' : 'text-slate-500'}`}>Fields marked with * are required.</p>
+        <p className={`mt-2 text-sm ${dark ? 'text-slate-100' : 'text-slate-700'}`}>Fields marked with * are required.</p>
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
         {config.fields.map((field) => {
@@ -179,10 +179,10 @@ export function LeadForm({ variant = 'quote', dark = false }: { variant?: LeadFo
         })}
       </div>
       {status === 'error' && <p role="alert" className="rounded-2xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">Please complete the required fields before submitting.</p>}
-      {status === 'loading' && <p role="status" className={`text-sm font-semibold ${dark ? 'text-white/75' : 'text-slate-600'}`}>Submitting securely…</p>}
+      {status === 'loading' && <p role="status" className={`text-sm font-semibold ${dark ? 'text-slate-100' : 'text-slate-700'}`}>Submitting securely…</p>}
       {status === 'success' && <p role="status" className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-800">Submission received. Redirecting to the confirmation page…</p>}
       <button disabled={status === 'loading'} className="rounded-full border border-cyan/50 bg-cyan px-5 py-3 font-black text-midnight shadow-glow transition hover:-translate-y-0.5 hover:bg-white disabled:cursor-not-allowed disabled:opacity-70">{status === 'loading' ? 'Submitting…' : config.submitLabel}</button>
-      <p className={`text-xs ${dark ? 'text-white/60' : 'text-slate-500'}`}>Privacy note: your details are used to respond to this research-use business inquiry.</p>
+      <p className={`text-xs ${dark ? 'text-slate-200' : 'text-slate-700'}`}>Privacy note: your details are used to respond to this research-use business inquiry.</p>
     </form>
   );
 }

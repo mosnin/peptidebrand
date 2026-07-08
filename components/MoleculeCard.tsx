@@ -7,7 +7,7 @@ export function MoleculeCard({ title = 'Research supply architecture', body = 'S
         {nodes.map(([cx, cy], index) => <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r={index % 2 ? 10 : 14} fill={index % 2 ? '#19b7b5' : '#68e8ff'} opacity="0.9" />)}
       </svg>
       <h3 className="text-xl font-black text-white">{title}</h3>
-      <p className="mt-3 text-sm leading-6 text-white/70">{body}</p>
+      <p className="mt-3 text-sm leading-6 text-slate-100">{body}</p>
     </div>
   );
 }

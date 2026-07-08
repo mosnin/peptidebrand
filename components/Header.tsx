@@ -77,7 +77,7 @@ export function Header() {
                           {group.links.map((link) => (
                             <Link key={link.href} href={link.href} onClick={() => setServicesOpen(false)} className="block rounded-2xl p-2 transition hover:bg-mist">
                               <span className="block text-sm font-bold text-navy">{link.label}</span>
-                              <span className="mt-0.5 block text-xs leading-5 text-slate-500">{link.description}</span>
+                              <span className="mt-0.5 block text-xs leading-5 text-slate-700">{link.description}</span>
                             </Link>
                           ))}
                         </div>
@@ -87,7 +87,7 @@ export function Header() {
                   <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-navy px-6 py-5 text-white">
                     <div>
                       <p className="text-sm font-black">100% free 1-on-1 consultations — every time.</p>
-                      <p className="mt-1 text-xs text-white/70">USA-based manufacturers only. 99%+ purity. No cost to connect with a supplier.</p>
+                      <p className="mt-1 text-xs text-slate-100">USA-based manufacturers only. 99%+ purity. No cost to connect with a supplier.</p>
                     </div>
                     <Link href="/quote" onClick={() => setServicesOpen(false)} className="shrink-0 rounded-full bg-cyan px-5 py-2.5 text-sm font-black text-midnight transition hover:bg-white">Get a Free Quote</Link>
                   </div>
@@ -112,7 +112,7 @@ export function Header() {
           <Container className="grid gap-8 py-8">
             <div className="rounded-3xl bg-navy p-5 text-white">
               <p className="text-sm font-black">100% free 1-on-1 consultations</p>
-              <p className="mt-1 text-xs text-white/70">USA-based manufacturers, 99%+ purity, hundreds of vetted partners — free to connect, always.</p>
+              <p className="mt-1 text-xs text-slate-100">USA-based manufacturers, 99%+ purity, hundreds of vetted partners — free to connect, always.</p>
             </div>
             {serviceMegaMenu.map((group) => (
               <div key={group.title}>

@@ -6,7 +6,7 @@ export function ProcessTimeline({ steps }: { steps: { title: string; body: strin
         <div key={step.title} className="glass-panel relative rounded-3xl p-5">
           <div className="flex h-12 w-12 items-center justify-center rounded-full border border-cyan/50 bg-cyan font-mono text-sm font-bold text-midnight shadow-glow">{String(index + 1).padStart(2, '0')}</div>
           <h3 className="mt-5 text-xl font-black text-white">{step.title}</h3>
-          <p className="mt-3 text-sm leading-6 text-white/70">{step.body}</p>
+          <p className="mt-3 text-sm leading-6 text-slate-100">{step.body}</p>
         </div>
       ))}
     </div>

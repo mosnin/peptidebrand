@@ -52,7 +52,7 @@ export function ServicePageTemplate({ page }: { page: SEOPage }) {
             <section>
               <p className="text-sm font-bold uppercase tracking-[0.25em] text-teal">Commercial overview</p>
               <h2 className="mt-3 text-3xl font-black text-navy">A practical service page for {page.targetKeyword} decisions</h2>
-              <p className="mt-4 text-lg leading-8 text-slate-600">{page.intro}</p>
+              <p className="mt-4 text-lg leading-8 text-slate-700">{page.intro}</p>
               {contextImage && (
                 <div className="mt-6 overflow-hidden rounded-3xl border border-slate-200 shadow-soft">
                   <Image src={contextImage.src} alt={contextImage.alt} width={1200} height={800} className="h-auto w-full object-cover" />
@@ -67,7 +67,7 @@ export function ServicePageTemplate({ page }: { page: SEOPage }) {
                   <div className="mt-6 grid gap-4 md:grid-cols-3">
                     {detail.audience.map((item) => (
                       <div key={item} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
-                        <p className="leading-7 text-slate-600">{item}</p>
+                        <p className="leading-7 text-slate-700">{item}</p>
                       </div>
                     ))}
                   </div>
@@ -91,7 +91,7 @@ export function ServicePageTemplate({ page }: { page: SEOPage }) {
                       <div key={item.step} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
                         <p className="text-sm font-black text-teal">0{index + 1}</p>
                         <h3 className="mt-3 text-xl font-black text-navy">{item.step}</h3>
-                        <p className="mt-3 text-sm leading-6 text-slate-600">{item.body}</p>
+                        <p className="mt-3 text-sm leading-6 text-slate-700">{item.body}</p>
                       </div>
                     ))}
                   </div>
@@ -136,7 +136,7 @@ export function ServicePageTemplate({ page }: { page: SEOPage }) {
                 {page.sections.map((section) => (
                   <div key={section.heading}>
                     <h3 className="text-2xl font-black text-navy">{section.heading}</h3>
-                    <p className="mt-3 text-lg leading-8 text-slate-600">{section.body}</p>
+                    <p className="mt-3 text-lg leading-8 text-slate-700">{section.body}</p>
                   </div>
                 ))}
               </div>
