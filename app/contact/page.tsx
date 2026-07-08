@@ -12,7 +12,7 @@ export default function ContactPage() {
       <Container className="grid gap-10 lg:grid-cols-2">
         <div>
           <h1 className="text-4xl font-black text-navy">Contact</h1>
-          <p className="mt-4 text-slate-600">Tell us about your research-use sourcing, white label, testing, COA, or fulfillment questions.</p>
+          <p className="mt-4 text-slate-700">Tell us about your research-use sourcing, white label, testing, COA, or fulfillment questions.</p>
         </div>
         <LeadForm variant="contact" />
       </Container>

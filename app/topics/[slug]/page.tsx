@@ -37,14 +37,14 @@ function DetailSection({ title, items, entity }: { title: string; items: string[
   return (
     <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
       <h2 className="text-2xl font-bold text-navy">{title}</h2>
-      <p className="mt-3 text-slate-600">
+      <p className="mt-3 text-slate-700">
         Use these checkpoints to turn {entity} research into a repeatable operating file. The goal is to make sourcing decisions traceable, packaging decisions reviewable, and fulfillment handoffs clear before a page or quote flow goes live.
       </p>
       <div className="mt-5 grid gap-4">
         {items.map((item) => (
           <div key={item} className="rounded-2xl bg-slate-50 p-4">
             <h3 className="text-base font-semibold text-navy">Checkpoint</h3>
-            <p className="mt-2 text-sm leading-6 text-slate-600">{item}</p>
+            <p className="mt-2 text-sm leading-6 text-slate-700">{item}</p>
           </div>
         ))}
       </div>
@@ -80,10 +80,10 @@ export default async function TopicRoute({ params }: RouteProps) {
       <Section className="bg-hero text-white">
         <Container>
           <div className="max-w-4xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-teal">Safe programmatic SEO topic</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan">Safe programmatic SEO topic</p>
             <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-6xl">{page.h1}</h1>
             <p className="mt-6 text-xl leading-8 text-slate-200">{page.intro}</p>
-            <div className="mt-8 rounded-3xl border border-teal/30 bg-teal/10 p-5 text-sm leading-6 text-teal-50">
+            <div className="mt-8 rounded-3xl border border-cyan/30 bg-midnight/40 p-5 text-sm leading-6 text-white">
               <strong className="block text-white">Research-use-only disclaimer</strong>
               {topicDisclaimer}
             </div>
@@ -106,8 +106,8 @@ export default async function TopicRoute({ params }: RouteProps) {
             <div className="space-y-8">
               <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
                 <h2 className="text-2xl font-bold text-navy">Who this topic is for</h2>
-                <p className="mt-3 text-slate-600">{page.audience}</p>
-                <p className="mt-4 text-slate-600">
+                <p className="mt-3 text-slate-700">{page.audience}</p>
+                <p className="mt-4 text-slate-700">
                   This page is designed for teams that want a compliant research-supply decision framework, not a short keyword doorway. Use it to brief supplier conversations, organize batch documentation, prepare label copy, and connect the topic to a commercial service page for deeper sourcing help.
                 </p>
               </section>
@@ -118,7 +118,7 @@ export default async function TopicRoute({ params }: RouteProps) {
             <aside className="space-y-6">
               <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
                 <h2 className="text-xl font-bold text-navy">Primary service path</h2>
-                <p className="mt-3 text-sm text-slate-600">Continue from this informational topic into a commercial service workflow.</p>
+                <p className="mt-3 text-sm text-slate-700">Continue from this informational topic into a commercial service workflow.</p>
                 <Link href={page.primaryService.href} className="mt-4 inline-flex font-semibold text-teal">{page.primaryService.label} →</Link>
               </div>
               <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
@@ -140,7 +140,7 @@ export default async function TopicRoute({ params }: RouteProps) {
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.25em] text-teal">FAQ schema enabled</p>
               <h2 className="mt-3 text-3xl font-black text-navy">Questions teams ask before acting on this topic</h2>
-              <p className="mt-4 text-slate-600">These answers keep the conversation focused on supplier operations, documentation, testing records, packaging systems, fulfillment workflows, and compliance review.</p>
+              <p className="mt-4 text-slate-700">These answers keep the conversation focused on supplier operations, documentation, testing records, packaging systems, fulfillment workflows, and compliance review.</p>
             </div>
             <FAQSection items={page.faq} />
           </div>

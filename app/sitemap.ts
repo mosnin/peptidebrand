@@ -3,7 +3,7 @@ import { absoluteUrl } from '@/lib/seo';
 import { getLastModified, seoPages } from '@/lib/seo-page-map';
 import { topicPages } from '@/lib/topic-pages';
 
-const coreRoutes = ['/', '/services', '/resources', '/topics', '/blog', '/contact', '/quote', '/compliance'];
+const coreRoutes = ['/', '/services', '/resources', '/topics', '/blog', '/contact', '/quote', '/compliance', '/privacy-policy', '/terms-of-use'];
 const defaultLastModified = new Date('2026-07-08');
 
 export default function sitemap(): MetadataRoute.Sitemap {

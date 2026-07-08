@@ -2,20 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { color-scheme: dark; --radius: 1.5rem; --font-display: Georgia, Cambria, serif; }
+:root { color-scheme: dark; --radius: 1.5rem; --font-display: var(--font-cormorant), Georgia, Cambria, serif; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; background: #030712; }
-body { margin: 0; background: #030712; color: #e5eef8; font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif; }
+body { margin: 0; background: #030712; color: #e5eef8; font-family: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif; }
 a { text-decoration: none; }
-::selection { background: #4c8dff; color: #030712; }
+::selection { background: #d7b46a; color: #030712; }
 
 @layer base {
-  h1, h2 { letter-spacing: -0.035em; }
-  :focus-visible { outline: 3px solid #4c8dff; outline-offset: 3px; }
+  h1, h2 { letter-spacing: -0.035em; font-family: var(--font-display); }
+  :focus-visible { outline: 3px solid #d7b46a; outline-offset: 3px; }
 }
 
 @layer components {
-  .glass-panel { border: 1px solid rgba(255,255,255,0.12); background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04)); box-shadow: 0 24px 80px rgba(0,0,0,0.32); backdrop-filter: blur(18px); }
-  .technical-grid { background-image: linear-gradient(rgba(148,197,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(148,197,255,0.08) 1px, transparent 1px); background-size: 44px 44px; }
-  .dark-section { background: radial-gradient(circle at 20% 20%, rgba(76,141,255,0.14), transparent 34%), linear-gradient(135deg, #07111f, #030712); color: #f8fbff; }
+  .glass-panel { border: 1px solid rgba(215,180,106,0.18); background: linear-gradient(135deg, rgba(255,255,255,0.13), rgba(215,180,106,0.05)); box-shadow: 0 24px 80px rgba(0,0,0,0.34); backdrop-filter: blur(18px); }
+  .technical-grid { background-image: linear-gradient(rgba(215,180,106,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(215,180,106,0.08) 1px, transparent 1px); background-size: 44px 44px; }
+  .dark-section { background: radial-gradient(circle at 20% 20%, rgba(215,180,106,0.13), transparent 34%), linear-gradient(135deg, #07111f, #030712); color: #f8fbff; }
 }

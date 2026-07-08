@@ -9,7 +9,7 @@ export function FAQSection({ items, dark = false }: { items: FAQItem[]; dark?: b
             {item.question}
             <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-sm transition group-open:rotate-45 ${dark ? 'border-cyan/30 text-cyan' : 'border-teal/30 text-teal'}`}>+</span>
           </summary>
-          <p className={`mt-4 leading-7 ${dark ? 'text-white/70' : 'text-slate-600'}`}>{item.answer}</p>
+          <p className={`mt-4 leading-7 ${dark ? 'text-slate-100' : 'text-slate-700'}`}>{item.answer}</p>
         </details>
       ))}
     </div>

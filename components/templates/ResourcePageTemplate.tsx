@@ -37,7 +37,7 @@ export function ResourcePageTemplate({ page }: { page: SEOPage }) {
                 <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
                   <p className="text-sm font-bold uppercase tracking-[0.25em] text-teal">Last updated</p>
                   <p className="mt-2 text-slate-700">{detail.lastUpdated}</p>
-                  <p className="mt-4 leading-7 text-slate-600">{detail.complianceNote}</p>
+                  <p className="mt-4 leading-7 text-slate-700">{detail.complianceNote}</p>
                 </div>
 
                 <nav className="rounded-3xl bg-mist p-6" aria-label="Table of contents">
@@ -53,7 +53,7 @@ export function ResourcePageTemplate({ page }: { page: SEOPage }) {
 
                 <section className="rounded-3xl bg-navy p-6 text-white">
                   <h2 className="text-2xl font-black">{detail.conversionCta.heading}</h2>
-                  <p className="mt-3 text-white/75">{detail.conversionCta.body}</p>
+                  <p className="mt-3 text-slate-100">{detail.conversionCta.body}</p>
                   <Link href={detail.conversionCta.href} className="mt-5 inline-flex rounded-full bg-teal px-5 py-3 text-sm font-bold text-white transition hover:bg-teal/90">
                     {detail.conversionCta.label}
                   </Link>
@@ -62,12 +62,12 @@ export function ResourcePageTemplate({ page }: { page: SEOPage }) {
                 {detail.sections.map((section) => (
                   <section key={section.id} id={section.id} className="scroll-mt-24">
                     <h2 className="text-3xl font-black text-navy">{section.title}</h2>
-                    <p className="mt-4 text-lg leading-8 text-slate-600">{section.body}</p>
+                    <p className="mt-4 text-lg leading-8 text-slate-700">{section.body}</p>
                     <div className="mt-6 grid gap-4 md:grid-cols-2">
                       {section.points.map((point) => (
                         <div key={point.title} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
                           <h3 className="text-xl font-black text-navy">{point.title}</h3>
-                          <p className="mt-3 leading-7 text-slate-600">{point.body}</p>
+                          <p className="mt-3 leading-7 text-slate-700">{point.body}</p>
                         </div>
                       ))}
                     </div>
@@ -93,7 +93,7 @@ export function ResourcePageTemplate({ page }: { page: SEOPage }) {
                 {page.sections.map((section) => (
                   <div key={section.heading}>
                     <h3 className="text-2xl font-black text-navy">{section.heading}</h3>
-                    <p className="mt-3 text-lg leading-8 text-slate-600">{section.body}</p>
+                    <p className="mt-3 text-lg leading-8 text-slate-700">{section.body}</p>
                   </div>
                 ))}
               </div>
@@ -112,7 +112,7 @@ export function ResourcePageTemplate({ page }: { page: SEOPage }) {
             <KeywordPanel page={page} />
             <div className="rounded-3xl bg-white p-6 shadow-soft">
               <h2 className="text-2xl font-black text-navy">{page.cta.heading}</h2>
-              <p className="mt-3 text-slate-600">{page.cta.body}</p>
+              <p className="mt-3 text-slate-700">{page.cta.body}</p>
               <Link href={page.cta.href} className="mt-5 inline-flex rounded-full bg-teal px-5 py-3 text-sm font-bold text-white transition hover:bg-teal/90">
                 {page.cta.label}
               </Link>

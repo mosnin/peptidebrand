@@ -13,7 +13,7 @@ export default function ResourcesPage() {
     <Section>
       <Container>
         <h1 className="text-4xl font-black text-navy">Research-use peptide brand resources</h1>
-        <p className="mt-4 max-w-3xl text-slate-600">
+        <p className="mt-4 max-w-3xl text-slate-700">
           Guides on research peptide sourcing, white label operations, lab testing, COA management, fulfillment, labels, and compliant lead generation.
         </p>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -21,7 +21,7 @@ export default function ResourcesPage() {
             <Link key={page.path} href={page.path} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:border-teal">
               <p className="text-sm font-bold uppercase tracking-[0.2em] text-teal">{page.targetKeyword}</p>
               <h2 className="mt-3 text-2xl font-black text-navy">{page.h1}</h2>
-              <p className="mt-3 text-slate-600">{page.metaDescription}</p>
+              <p className="mt-3 text-slate-700">{page.metaDescription}</p>
             </Link>
           ))}
         </div>
@@ -29,7 +29,7 @@ export default function ResourcesPage() {
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.25em] text-gold">Resource download</p>
             <h2 className="mt-3 text-3xl font-black">Get a research-use brand launch resource.</h2>
-            <p className="mt-4 text-white/70">Request a checklist or guide for sourcing, COAs, packaging, fulfillment, or launch planning.</p>
+            <p className="mt-4 text-slate-100">Request a checklist or guide for sourcing, COAs, packaging, fulfillment, or launch planning.</p>
           </div>
           <LeadForm variant="newsletter" dark />
         </div>

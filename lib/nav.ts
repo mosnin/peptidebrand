@@ -39,3 +39,8 @@ export const resourceLinks: NavLink[] = [
   { href: '/resources/what-is-a-peptide-coa', label: 'What is a peptide COA', description: 'A plain-language guide to certificate of analysis records and review workflows.' },
   { href: '/topics', label: 'All topics', description: 'Browse the full research peptide sourcing topic library.' },
 ];
+
+export const legalLinks: NavLink[] = [
+  { href: '/privacy-policy', label: 'Privacy Policy', description: 'How Peptide Brand handles inquiry, analytics, and contact information.' },
+  { href: '/terms-of-use', label: 'Terms of Use', description: 'Website terms for research-use-only sourcing and brand planning information.' },
+];
