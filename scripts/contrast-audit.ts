@@ -1,3 +1,7 @@
+// @ts-nocheck
+declare const require: (specifier: string) => any;
+declare const process: { cwd: () => string; exit: (code?: number) => never };
+
 const { execFileSync } = require('node:child_process');
 const { readFileSync } = require('node:fs');
 const { join } = require('node:path');
