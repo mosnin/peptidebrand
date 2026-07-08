@@ -6,6 +6,8 @@ import { brandAssets } from '@/lib/assets';
 import type { SEOPage } from '@/lib/seo-page-map';
 
 export function PageHero({ page, eyebrow }: { page: SEOPage; eyebrow: string }) {
+  const heroHighlights = [page.targetKeyword, ...page.sections.slice(0, 2).map((section) => section.heading)];
+
   return (
     <section className="relative overflow-hidden bg-midnight py-16 text-white sm:py-24">
       <Image src={brandAssets.molecularMap} alt="" fill priority sizes="100vw" className="object-cover opacity-25" />
@@ -20,7 +22,7 @@ export function PageHero({ page, eyebrow }: { page: SEOPage; eyebrow: string }) 
             <Button href="/compliance" variant="secondary" size="lg">Compliance stance</Button>
           </div>
         </div>
-        <ChromatogramVisual />
+        <ChromatogramVisual highlights={heroHighlights} />
       </Container>
     </section>
   );

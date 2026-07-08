@@ -1,4 +1,4 @@
-export function ChromatogramVisual({ className = '' }: { className?: string }) {
+export function ChromatogramVisual({ className = '', highlights = ['Batch traceability', 'COA review', 'HPLC / LCMS files'] }: { className?: string; highlights?: string[] }) {
   return (
     <div className={`relative overflow-hidden rounded-4xl border border-white/10 bg-midnight/70 p-5 shadow-glass ${className}`} aria-label="Abstract chromatogram line visualization">
       <div className="absolute inset-0 technical-grid opacity-60" />
@@ -17,7 +17,7 @@ export function ChromatogramVisual({ className = '' }: { className?: string }) {
         <path d="M24 224 C80 222 96 216 122 214 C160 210 172 205 190 188 C214 160 228 78 244 76 C262 74 272 184 290 202 C318 232 340 216 366 210 C406 201 418 172 432 122 C444 78 455 34 468 36 C482 38 488 112 500 158 C516 216 534 224 566 216 C590 210 602 190 614 154 C628 106 638 84 650 118 C662 152 666 198 696 204 L696 250 L24 250 Z" fill="rgba(104,232,255,0.08)" />
       </svg>
       <div className="relative mt-4 grid gap-3 sm:grid-cols-3">
-        {['Batch traceability', 'COA review', 'HPLC / LCMS files'].map((label) => <div key={label} className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-100">{label}</div>)}
+        {highlights.map((label) => <div key={label} className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-100">{label}</div>)}
       </div>
     </div>
   );
