@@ -80,10 +80,10 @@ export default async function TopicRoute({ params }: RouteProps) {
       <Section className="bg-hero text-white">
         <Container>
           <div className="max-w-4xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-teal">Safe programmatic SEO topic</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan">Safe programmatic SEO topic</p>
             <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-6xl">{page.h1}</h1>
             <p className="mt-6 text-xl leading-8 text-slate-200">{page.intro}</p>
-            <div className="mt-8 rounded-3xl border border-teal/30 bg-teal/10 p-5 text-sm leading-6 text-teal-50">
+            <div className="mt-8 rounded-3xl border border-cyan/30 bg-midnight/40 p-5 text-sm leading-6 text-white/80">
               <strong className="block text-white">Research-use-only disclaimer</strong>
               {topicDisclaimer}
             </div>
