@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "compliance:scan": "node --experimental-strip-types scripts/compliance-scan.ts",
     "prebuild": "npm run compliance:scan && npm run audit:production",
-    "audit:production": "node --experimental-strip-types scripts/production-audit.ts"
+    "audit:production": "node --experimental-strip-types scripts/production-audit.ts",
+    "contrast:scan": "node --experimental-strip-types scripts/contrast-audit.ts"
   },
   "dependencies": {
     "next": "^15.5.0",
