@@ -10,17 +10,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const coreEntries = coreRoutes.map((route) => ({
     url: absoluteUrl(route),
     lastModified: defaultLastModified,
-    changeFrequency: route === '/' ? 'weekly' : 'monthly',
+    changeFrequency: route === '/' ? ('weekly' as const) : ('monthly' as const),
     priority: route === '/' ? 1 : 0.7,
   }));
 
   const mappedEntries = seoPages.map((page) => ({
     url: absoluteUrl(page.path),
     lastModified: getLastModified(page),
-    changeFrequency: page.kind === 'resource' ? 'monthly' : 'weekly',
+    changeFrequency: page.kind === 'resource' ? ('monthly' as const) : ('weekly' as const),
     priority: page.kind === 'resource' ? 0.75 : 0.8,
   }));
-
 
   const topicEntries = topicPages.map((page) => ({
     url: absoluteUrl(page.path),
