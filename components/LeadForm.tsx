@@ -124,8 +124,8 @@ export function LeadForm({ variant = 'quote', dark = false }: { variant?: LeadFo
   const config = variantConfig[variant];
   const labelClass = dark ? 'text-white/90' : 'text-ink';
   const inputClass = dark
-    ? 'rounded-2xl border border-white/10 bg-midnight/60 px-4 py-3 text-white placeholder:text-white/40 outline-none ring-cyan/25 transition focus:border-cyan/60 focus:ring-4'
-    : 'rounded-2xl border border-slate-200 bg-white px-4 py-3 text-ink outline-none ring-teal/20 transition focus:border-teal focus:ring-4';
+    ? 'w-full rounded-2xl border border-cyan/25 bg-white/[0.97] px-4 py-3 text-ink shadow-inner outline-none ring-cyan/25 transition placeholder:text-slate-400 focus:border-cyan focus:ring-4'
+    : 'w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-ink shadow-sm outline-none ring-teal/20 transition placeholder:text-slate-400 focus:border-teal focus:ring-4';
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -156,7 +156,7 @@ export function LeadForm({ variant = 'quote', dark = false }: { variant?: LeadFo
   }
 
   return (
-    <form name={config.formName} onSubmit={handleSubmit} className={`grid gap-5 rounded-4xl p-6 ${dark ? 'glass-panel' : 'border border-slate-200 bg-white shadow-soft'}`} noValidate>
+    <form name={config.formName} onSubmit={handleSubmit} className={`grid gap-5 rounded-4xl p-6 sm:p-8 ${dark ? 'glass-panel shadow-glow' : 'border border-slate-200 bg-white shadow-soft ring-1 ring-slate-100'}`} noValidate>
       <p className="hidden"><label htmlFor={`${id}-honeypot`}>Do not fill this out<input id={`${id}-honeypot`} name="honeypot" tabIndex={-1} autoComplete="off" /></label></p>
       <div>
         <h2 className={`font-display text-3xl font-bold ${dark ? 'text-white' : 'text-navy'}`}>{config.title}</h2>
@@ -170,10 +170,10 @@ export function LeadForm({ variant = 'quote', dark = false }: { variant?: LeadFo
             return <label key={field.name} htmlFor={fieldId} className={`grid gap-2 text-sm font-semibold sm:col-span-2 ${labelClass}`}>{label}<textarea id={fieldId} name={field.name} required={field.required} rows={4} placeholder={field.placeholder} className={inputClass} /></label>;
           }
           if (field.type === 'select') {
-            return <label key={field.name} htmlFor={fieldId} className={`grid gap-2 text-sm font-semibold ${labelClass}`}>{label}<select id={fieldId} name={field.name} required={field.required} defaultValue="" className={inputClass}><option value="" disabled>Select one</option>{field.options?.map((option) => <option key={option}>{option}</option>)}</select></label>;
+            return <label key={field.name} htmlFor={fieldId} className={`grid gap-2 text-sm font-semibold ${labelClass}`}>{label}<select id={fieldId} name={field.name} required={field.required} defaultValue="" className={`${inputClass} appearance-none`}><option value="" disabled>Select one</option>{field.options?.map((option) => <option key={option}>{option}</option>)}</select></label>;
           }
           if (field.type === 'checkbox') {
-            return <label key={field.name} htmlFor={fieldId} className={`flex gap-3 text-sm font-semibold sm:col-span-2 ${labelClass}`}><input id={fieldId} name={field.name} type="checkbox" required={field.required} value="yes" className="mt-1 h-4 w-4 rounded border-slate-300 text-teal" /><span>{label}</span></label>;
+            return <label key={field.name} htmlFor={fieldId} className={`flex gap-3 text-sm font-semibold sm:col-span-2 ${labelClass}`}><input id={fieldId} name={field.name} type="checkbox" required={field.required} value="yes" className="mt-1 h-4 w-4 rounded border-slate-300 text-teal accent-teal" /><span>{label}</span></label>;
           }
           return <label key={field.name} htmlFor={fieldId} className={`grid gap-2 text-sm font-semibold ${labelClass}`}>{label}<input id={fieldId} name={field.name} type={field.type} required={field.required} placeholder={field.placeholder} className={inputClass} /></label>;
         })}
@@ -181,7 +181,7 @@ export function LeadForm({ variant = 'quote', dark = false }: { variant?: LeadFo
       {status === 'error' && <p role="alert" className="rounded-2xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">Please complete the required fields before submitting.</p>}
       {status === 'loading' && <p role="status" className={`text-sm font-semibold ${dark ? 'text-white/75' : 'text-slate-600'}`}>Submitting securely…</p>}
       {status === 'success' && <p role="status" className="rounded-2xl bg-teal/10 px-4 py-3 text-sm font-semibold text-teal">Submission received. Redirecting to the confirmation page…</p>}
-      <button disabled={status === 'loading'} className="rounded-full border border-cyan/40 bg-cyan px-5 py-3 font-black text-midnight shadow-glow transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-70">{status === 'loading' ? 'Submitting…' : config.submitLabel}</button>
+      <button disabled={status === 'loading'} className="rounded-full border border-cyan/50 bg-cyan px-5 py-3 font-black text-midnight shadow-glow transition hover:-translate-y-0.5 hover:bg-white disabled:cursor-not-allowed disabled:opacity-70">{status === 'loading' ? 'Submitting…' : config.submitLabel}</button>
       <p className={`text-xs ${dark ? 'text-white/60' : 'text-slate-500'}`}>Privacy note: your details are used to respond to this research-use business inquiry.</p>
     </form>
   );
