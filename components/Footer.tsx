@@ -14,7 +14,7 @@ export function Footer() {
             <Logo variant="icon" />
             <p className="mt-4 font-display text-2xl font-bold text-white">{siteConfig.name}</p>
             <p className="mt-4 max-w-md text-sm leading-6 text-white/60">{researchDisclaimer}</p>
-            <p className="mt-5 rounded-2xl border border-cyan/20 bg-cyan/10 p-4 text-sm text-cyan/90">USA-based, lab-created research peptides. Free 1-on-1 consultations — we never charge to connect you with a supplier.</p>
+            <p className="mt-5 rounded-2xl border border-cyan/25 bg-cyan/10 p-4 text-sm text-white/85">USA-based, lab-created research peptides. Free 1-on-1 consultations — we never charge to connect you with a supplier.</p>
             <TrustBadges className="mt-6" />
           </div>
           {serviceMegaMenu.map((group) => (

@@ -180,7 +180,7 @@ export function LeadForm({ variant = 'quote', dark = false }: { variant?: LeadFo
       </div>
       {status === 'error' && <p role="alert" className="rounded-2xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">Please complete the required fields before submitting.</p>}
       {status === 'loading' && <p role="status" className={`text-sm font-semibold ${dark ? 'text-white/75' : 'text-slate-600'}`}>Submitting securely…</p>}
-      {status === 'success' && <p role="status" className="rounded-2xl bg-teal/10 px-4 py-3 text-sm font-semibold text-teal">Submission received. Redirecting to the confirmation page…</p>}
+      {status === 'success' && <p role="status" className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-800">Submission received. Redirecting to the confirmation page…</p>}
       <button disabled={status === 'loading'} className="rounded-full border border-cyan/50 bg-cyan px-5 py-3 font-black text-midnight shadow-glow transition hover:-translate-y-0.5 hover:bg-white disabled:cursor-not-allowed disabled:opacity-70">{status === 'loading' ? 'Submitting…' : config.submitLabel}</button>
       <p className={`text-xs ${dark ? 'text-white/60' : 'text-slate-500'}`}>Privacy note: your details are used to respond to this research-use business inquiry.</p>
     </form>
