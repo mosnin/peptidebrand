@@ -1,0 +1,151 @@
+import Link from 'next/link';
+import { Container } from '@/components/Container';
+import { CTASection } from '@/components/CTASection';
+import { FAQSection } from '@/components/FAQSection';
+import { InternalLinks } from '@/components/InternalLinks';
+import { KeywordPanel } from '@/components/KeywordPanel';
+import { LeadForm, type LeadFormVariant } from '@/components/LeadForm';
+import { PageHero } from '@/components/PageHero';
+import { RelatedLinks } from '@/components/RelatedLinks';
+import { SEOJsonLd } from '@/components/SEOJsonLd';
+import { Section } from '@/components/Section';
+import { breadcrumbSchema, faqSchema, serviceSchema } from '@/lib/schema';
+import { getServicePageDetail, researchUseDisclaimer } from '@/lib/service-page-details';
+import type { SEOPage } from '@/lib/seo-page-map';
+
+function formVariantForSlug(slug: string): LeadFormVariant {
+  if (slug === 'white-label-peptides') return 'white-label';
+  if (slug === 'peptide-lab-testing' || slug === 'peptide-coa-testing') return 'lab-testing';
+  if (slug === 'research-peptide-supplier' || slug === 'wholesale-peptides') return 'supplier';
+  return 'quote';
+}
+
+export function ServicePageTemplate({ page }: { page: SEOPage }) {
+  const detail = getServicePageDetail(page.slug);
+  const formVariant = formVariantForSlug(page.slug);
+
+  return (
+    <>
+      <SEOJsonLd data={[breadcrumbSchema([{ name: 'Home', path: '/' }, { name: page.h1, path: page.path }]), serviceSchema(page), faqSchema(page.faq)]} />
+      <PageHero page={page} eyebrow="Commercial service" />
+      <Section>
+        <Container className="grid gap-10 lg:grid-cols-[1fr_340px]">
+          <div className="space-y-12">
+            <div className="rounded-3xl border border-teal/20 bg-teal/10 p-6">
+              <h2 className="text-xl font-black text-navy">Research-use-only disclaimer</h2>
+              <p className="mt-3 leading-7 text-slate-700">{researchUseDisclaimer}</p>
+            </div>
+
+            <section>
+              <p className="text-sm font-bold uppercase tracking-[0.25em] text-teal">Commercial overview</p>
+              <h2 className="mt-3 text-3xl font-black text-navy">A practical service page for {page.targetKeyword} decisions</h2>
+              <p className="mt-4 text-lg leading-8 text-slate-600">{page.intro}</p>
+            </section>
+
+            {detail && (
+              <>
+                <section>
+                  <h2 className="text-3xl font-black text-navy">Who this is for</h2>
+                  <div className="mt-6 grid gap-4 md:grid-cols-3">
+                    {detail.audience.map((item) => (
+                      <div key={item} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+                        <p className="leading-7 text-slate-600">{item}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                <section>
+                  <h2 className="text-3xl font-black text-navy">What we help with</h2>
+                  <div className="mt-6 grid gap-4 md:grid-cols-2">
+                    {detail.helpWith.map((item) => (
+                      <div key={item} className="rounded-2xl bg-mist p-5">
+                        <p className="leading-7 text-slate-700">{item}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                <section>
+                  <h2 className="text-3xl font-black text-navy">Process</h2>
+                  <div className="mt-6 grid gap-4 md:grid-cols-4">
+                    {detail.process.map((item, index) => (
+                      <div key={item.step} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+                        <p className="text-sm font-black text-teal">0{index + 1}</p>
+                        <h3 className="mt-3 text-xl font-black text-navy">{item.step}</h3>
+                        <p className="mt-3 text-sm leading-6 text-slate-600">{item.body}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                <section>
+                  <h2 className="text-3xl font-black text-navy">{detail.checklistTitle}</h2>
+                  <ul className="mt-6 grid gap-3">
+                    {detail.checklist.map((item) => (
+                      <li key={item} className="rounded-2xl border border-slate-200 bg-white p-4 text-slate-700 shadow-soft">✓ {item}</li>
+                    ))}
+                  </ul>
+                </section>
+
+                <section>
+                  <h2 className="text-3xl font-black text-navy">Common mistakes to avoid</h2>
+                  <div className="mt-6 grid gap-4 md:grid-cols-3">
+                    {detail.mistakes.map((item) => (
+                      <div key={item} className="rounded-2xl border border-gold/30 bg-gold/10 p-5">
+                        <p className="leading-7 text-slate-700">{item}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                <section>
+                  <h2 className="text-3xl font-black text-navy">Adjacent service pages</h2>
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    {detail.adjacentLinks.map((item) => (
+                      <Link key={item.href} href={item.href} className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 transition hover:border-teal hover:text-teal">
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                </section>
+              </>
+            )}
+
+            <section>
+              <h2 className="text-3xl font-black text-navy">Additional planning notes</h2>
+              <div className="mt-6 space-y-6">
+                {page.sections.map((section) => (
+                  <div key={section.heading}>
+                    <h3 className="text-2xl font-black text-navy">{section.heading}</h3>
+                    <p className="mt-3 text-lg leading-8 text-slate-600">{section.body}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section>
+              <h2 className="text-3xl font-black text-navy">Related resources</h2>
+              <div className="mt-6">
+                <RelatedLinks page={page} />
+              <InternalLinks page={page} />
+              </div>
+            </section>
+
+            <section>
+              <h2 className="text-3xl font-black text-navy">Frequently asked questions</h2>
+              <div className="mt-6">
+                <FAQSection items={page.faq} />
+              </div>
+            </section>
+          </div>
+          <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
+            <KeywordPanel page={page} />
+            <LeadForm variant={formVariant} />
+          </aside>
+        </Container>
+      </Section>
+      <CTASection />
+    </>
+  );
+}

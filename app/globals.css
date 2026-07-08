@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; --radius: 1.5rem; --font-display: Georgia, Cambria, serif; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: #030712; }
+body { margin: 0; background: #030712; color: #e5eef8; font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif; }
+a { text-decoration: none; }
+::selection { background: #68e8ff; color: #030712; }
+
+@layer base {
+  h1, h2 { letter-spacing: -0.035em; }
+  :focus-visible { outline: 3px solid #68e8ff; outline-offset: 3px; }
+}
+
+@layer components {
+  .glass-panel { border: 1px solid rgba(255,255,255,0.12); background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04)); box-shadow: 0 24px 80px rgba(0,0,0,0.32); backdrop-filter: blur(18px); }
+  .technical-grid { background-image: linear-gradient(rgba(148,197,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(148,197,255,0.08) 1px, transparent 1px); background-size: 44px 44px; }
+  .dark-section { background: radial-gradient(circle at 20% 20%, rgba(104,232,255,0.12), transparent 34%), linear-gradient(135deg, #07111f, #030712); color: #f8fbff; }
+}
