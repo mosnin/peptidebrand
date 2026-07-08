@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/Header';
-import { NetlifyFormDefinitions } from '@/components/NetlifyFormDefinitions';
 import { Footer } from '@/components/Footer';
 import { StickyMobileCTA } from '@/components/StickyMobileCTA';
 import { SEOJsonLd } from '@/components/SEOJsonLd';
@@ -21,7 +20,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" className={inter.variable}>
       <body>
         <SEOJsonLd data={identitySchema} />
-        <NetlifyFormDefinitions />
         <Header />
         <main>{children}</main>
         <Footer />

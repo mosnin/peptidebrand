@@ -83,8 +83,7 @@ const schemaSource = read('lib/schema.ts');
 add(results, 'structured data helpers exist', ['BreadcrumbList', 'FAQPage', 'Article', 'Service'].every((token) => schemaSource.includes(token)), ['lib/schema.ts includes breadcrumb, FAQ, article, and service schema helpers.']);
 
 const formSource = read('components/LeadForm.tsx');
-const staticFormSource = read('components/NetlifyFormDefinitions.tsx');
-add(results, 'forms include Netlify attributes and spam trap', ['data-netlify="true"', 'data-netlify-honeypot="bot-field"', 'name="form-name"', 'bot-field'].every((token) => formSource.includes(token) || staticFormSource.includes(token)), ['LeadForm and hidden Netlify form definitions include Netlify form attributes, hidden form-name, and honeypot fields.']);
+add(results, 'forms submit to API route with spam trap', ['/api/lead', 'honeypot'].every((token) => formSource.includes(token)), ['LeadForm submits to the /api/lead route handler and includes a honeypot field.']);
 
 add(results, 'thank-you routes are noindex', noindexRoutes.every((route) => read(`app${route}/page.tsx`).includes('noIndex: true')), ['All confirmation pages call createMetadata with noIndex: true.']);
 
@@ -109,9 +108,6 @@ const brokenLinks = collectInternalLinks().filter(({ href }) => {
   return !knownRoutes.has(clean);
 });
 add(results, 'internal links resolve to known routes', brokenLinks.length === 0, brokenLinks.slice(0, 20).map((link) => `${link.file} -> ${link.href}`));
-
-const netlifySource = read('netlify.toml');
-add(results, 'Netlify config is present', netlifySource.includes('command = "npm run build"') && netlifySource.includes('publish = ".next"'), ['netlify.toml specifies the build command and .next publish directory; Netlify applies the modern Next.js/OpenNext adapter automatically.']);
 
 const imageAltSource = read('lib/image-alt.ts');
 add(results, 'image alt text system exists', imageAltSource.includes('getImageAlt') && imageAltSource.includes('og-default'), ['lib/image-alt.ts provides reusable image alt text lookup.']);

@@ -1,6 +1,7 @@
 'use client';
 
 import { useId, useState, type FormEvent } from 'react';
+import { useRouter } from 'next/navigation';
 import { trackConversion, type ConversionEventName } from '@/lib/analytics';
 
 export type LeadFormVariant = 'quote' | 'supplier' | 'white-label' | 'lab-testing' | 'newsletter' | 'contact';
@@ -118,6 +119,7 @@ const variantConfig: Record<LeadFormVariant, { formName: string; title: string; 
 
 export function LeadForm({ variant = 'quote', dark = false }: { variant?: LeadFormVariant; dark?: boolean }) {
   const id = useId();
+  const router = useRouter();
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const config = variantConfig[variant];
   const labelClass = dark ? 'text-white/90' : 'text-ink';
@@ -125,24 +127,37 @@ export function LeadForm({ variant = 'quote', dark = false }: { variant?: LeadFo
     ? 'rounded-2xl border border-white/10 bg-midnight/60 px-4 py-3 text-white placeholder:text-white/40 outline-none ring-cyan/25 transition focus:border-cyan/60 focus:ring-4'
     : 'rounded-2xl border border-slate-200 bg-white px-4 py-3 text-ink outline-none ring-teal/20 transition focus:border-teal focus:ring-4';
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     const form = event.currentTarget;
     setStatus('idle');
     if (!form.checkValidity()) {
-      event.preventDefault();
       setStatus('error');
       form.reportValidity();
       return;
     }
     setStatus('loading');
-    trackConversion({ event: config.event, formName: config.formName, formVariant: variant, pagePath: typeof window === 'undefined' ? undefined : window.location.pathname });
-    window.setTimeout(() => setStatus('success'), 50);
+    const formData = new FormData(form);
+    const honeypot = String(formData.get('honeypot') ?? '');
+    const fields = Object.fromEntries(config.fields.map((field) => [field.name, formData.get(field.name)]));
+    try {
+      const response = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ formName: config.formName, honeypot, fields }),
+      });
+      if (!response.ok) throw new Error('Submission failed');
+      trackConversion({ event: config.event, formName: config.formName, formVariant: variant, pagePath: typeof window === 'undefined' ? undefined : window.location.pathname });
+      setStatus('success');
+      router.push(config.action);
+    } catch {
+      setStatus('error');
+    }
   }
 
   return (
-    <form name={config.formName} method="POST" action={config.action} data-netlify="true" data-netlify-honeypot="bot-field" onSubmit={handleSubmit} className={`grid gap-5 rounded-4xl p-6 ${dark ? 'glass-panel' : 'border border-slate-200 bg-white shadow-soft'}`} noValidate>
-      <input type="hidden" name="form-name" value={config.formName} />
-      <p className="hidden"><label htmlFor={`${id}-bot-field`}>Do not fill this out<input id={`${id}-bot-field`} name="bot-field" tabIndex={-1} autoComplete="off" /></label></p>
+    <form name={config.formName} onSubmit={handleSubmit} className={`grid gap-5 rounded-4xl p-6 ${dark ? 'glass-panel' : 'border border-slate-200 bg-white shadow-soft'}`} noValidate>
+      <p className="hidden"><label htmlFor={`${id}-honeypot`}>Do not fill this out<input id={`${id}-honeypot`} name="honeypot" tabIndex={-1} autoComplete="off" /></label></p>
       <div>
         <h2 className={`font-display text-3xl font-bold ${dark ? 'text-white' : 'text-navy'}`}>{config.title}</h2>
         <p className={`mt-2 text-sm ${dark ? 'text-white/70' : 'text-slate-500'}`}>Fields marked with * are required.</p>
@@ -167,7 +182,7 @@ export function LeadForm({ variant = 'quote', dark = false }: { variant?: LeadFo
       {status === 'loading' && <p role="status" className={`text-sm font-semibold ${dark ? 'text-white/75' : 'text-slate-600'}`}>Submitting securely…</p>}
       {status === 'success' && <p role="status" className="rounded-2xl bg-teal/10 px-4 py-3 text-sm font-semibold text-teal">Submission received. Redirecting to the confirmation page…</p>}
       <button disabled={status === 'loading'} className="rounded-full border border-cyan/40 bg-cyan px-5 py-3 font-black text-midnight shadow-glow transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-70">{status === 'loading' ? 'Submitting…' : config.submitLabel}</button>
-      <p className={`text-xs ${dark ? 'text-white/60' : 'text-slate-500'}`}>Privacy note: your details are used to respond to this research-use business inquiry. Form markup is prepared for Netlify Forms or future server action integration.</p>
+      <p className={`text-xs ${dark ? 'text-white/60' : 'text-slate-500'}`}>Privacy note: your details are used to respond to this research-use business inquiry.</p>
     </form>
   );
 }
