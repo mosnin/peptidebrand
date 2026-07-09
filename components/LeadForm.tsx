@@ -123,7 +123,7 @@ export function LeadForm({ variant = 'quote' }: { variant?: LeadFormVariant }) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const config = variantConfig[variant];
   const labelClass = 'text-ink';
-  const inputClass = 'rounded-2xl border border-slate-200 bg-white px-4 py-3 text-ink outline-none ring-blue/20 transition focus:border-blue focus:ring-4';
+  const inputClass = 'w-full min-w-0 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-ink outline-none ring-blue/20 transition focus:border-blue focus:ring-4';
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -165,15 +165,15 @@ export function LeadForm({ variant = 'quote' }: { variant?: LeadFormVariant }) {
           const fieldId = `${id}-${field.name}`;
           const label = `${field.label}${field.required ? ' *' : ''}`;
           if (field.type === 'textarea') {
-            return <label key={field.name} htmlFor={fieldId} className={`grid gap-2 text-sm font-semibold sm:col-span-2 ${labelClass}`}>{label}<textarea id={fieldId} name={field.name} required={field.required} rows={4} placeholder={field.placeholder} className={inputClass} /></label>;
+            return <label key={field.name} htmlFor={fieldId} className={`grid min-w-0 gap-2 text-sm font-semibold sm:col-span-2 ${labelClass}`}>{label}<textarea id={fieldId} name={field.name} required={field.required} rows={4} placeholder={field.placeholder} className={inputClass} /></label>;
           }
           if (field.type === 'select') {
-            return <label key={field.name} htmlFor={fieldId} className={`grid gap-2 text-sm font-semibold ${labelClass}`}>{label}<select id={fieldId} name={field.name} required={field.required} defaultValue="" className={inputClass}><option value="" disabled>Select one</option>{field.options?.map((option) => <option key={option}>{option}</option>)}</select></label>;
+            return <label key={field.name} htmlFor={fieldId} className={`grid min-w-0 gap-2 text-sm font-semibold ${labelClass}`}>{label}<select id={fieldId} name={field.name} required={field.required} defaultValue="" className={inputClass}><option value="" disabled>Select one</option>{field.options?.map((option) => <option key={option}>{option}</option>)}</select></label>;
           }
           if (field.type === 'checkbox') {
-            return <label key={field.name} htmlFor={fieldId} className={`flex gap-3 text-sm font-semibold sm:col-span-2 ${labelClass}`}><input id={fieldId} name={field.name} type="checkbox" required={field.required} value="yes" className="mt-1 h-4 w-4 rounded border-slate-300 text-blue" /><span>{label}</span></label>;
+            return <label key={field.name} htmlFor={fieldId} className={`flex min-w-0 gap-3 text-sm font-semibold sm:col-span-2 ${labelClass}`}><input id={fieldId} name={field.name} type="checkbox" required={field.required} value="yes" className="mt-1 h-4 w-4 shrink-0 rounded border-slate-300 text-blue" /><span>{label}</span></label>;
           }
-          return <label key={field.name} htmlFor={fieldId} className={`grid gap-2 text-sm font-semibold ${labelClass}`}>{label}<input id={fieldId} name={field.name} type={field.type} required={field.required} placeholder={field.placeholder} className={inputClass} /></label>;
+          return <label key={field.name} htmlFor={fieldId} className={`grid min-w-0 gap-2 text-sm font-semibold ${labelClass}`}>{label}<input id={fieldId} name={field.name} type={field.type} required={field.required} placeholder={field.placeholder} className={inputClass} /></label>;
         })}
       </div>
       {status === 'error' && <p role="alert" className="rounded-2xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">Please complete the required fields before submitting.</p>}

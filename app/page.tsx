@@ -70,7 +70,7 @@ export default function HomePage() {
         <Container className="relative grid gap-12 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:py-28">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.3em] text-blue">USA-based • Lab-created • 100% free consultations</p>
-            <h1 className="mt-5 max-w-5xl font-display text-5xl font-bold tracking-tight text-navy sm:text-7xl">Launch a USA-made peptide brand with 99%+ pure, lab-tested research peptides.</h1>
+            <h1 className="mt-5 max-w-3xl font-display text-5xl font-bold tracking-tight text-navy sm:text-6xl">USA-made peptide brands, backed by 99%+ purity.</h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">We connect research-use brands with hundreds of vetted, USA-based peptide manufacturers for wholesale sourcing, white label, and full private label brand creation — with free 1-on-1 support from day one.</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button href="#lead-capture">Get a free consultation</Button>

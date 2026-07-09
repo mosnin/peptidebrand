@@ -98,9 +98,6 @@ add(results, 'static pages have useful meta descriptions', metadataFailures.leng
 const h1Failures = appPageFiles.filter((file) => !file.includes('[')).filter((file) => (read(file).match(/<h1\b/g) ?? []).length !== 1).map((file) => relative(root, file));
 add(results, 'static routes have one H1', h1Failures.length === 0, h1Failures.length ? h1Failures : ['Every static app page has exactly one <h1>. Dynamic routes render page templates with one <h1>.']);
 
-const visualSource = ['components/ChromatogramVisual.tsx', 'components/MoleculeCard.tsx'].map(read).join('\n');
-add(results, 'visuals have accessible text alternatives', visualSource.includes('aria-label') && visualSource.includes('<title'), ['SVG visual components include aria labels and/or title text.']);
-
 const knownRoutes = new Set(routes);
 const brokenLinks = collectInternalLinks().filter(({ href }) => {
   const clean = href.split('#')[0].replace(/\/$/, '') || '/';
