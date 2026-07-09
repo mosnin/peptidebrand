@@ -11,6 +11,7 @@ import { ProcessTimeline } from '@/components/ProcessTimeline';
 import { SEOJsonLd } from '@/components/SEOJsonLd';
 import { Section } from '@/components/Section';
 import { FadeIn } from '@/components/motion/FadeIn';
+import { QualityCheckpointsChart } from '@/components/ui/QualityCheckpointsChart';
 import { brandAssets } from '@/lib/assets';
 import { serviceMegaMenu } from '@/lib/nav';
 import { createMetadata, organizationSchema, websiteSchema } from '@/lib/seo';
@@ -187,6 +188,19 @@ export default function HomePage() {
             <div className="overflow-hidden rounded-3xl border border-slate-200 shadow-soft">
               <Image src={brandAssets.hplcInterface} alt="HPLC analysis dashboard confirming 99.12 percent research peptide purity with a pass result" width={700} height={440} className="h-full w-full object-cover" quality={90} />
             </div>
+          </FadeIn>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <FadeIn>
+            <p className="text-sm font-bold uppercase tracking-[0.25em] text-blue">Documented every step</p>
+            <h2 className="mt-3 font-display text-3xl font-semibold text-navy sm:text-4xl">What we verify in every batch.</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">Every sourcing engagement runs through a documented checklist across five stages, from initial supplier vetting to final fulfillment handoff, so nothing gets skipped as your catalog scales.</p>
+          </FadeIn>
+          <FadeIn delay={0.1} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
+            <QualityCheckpointsChart />
           </FadeIn>
         </Container>
       </Section>
