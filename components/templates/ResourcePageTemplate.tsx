@@ -28,96 +28,104 @@ export function ResourcePageTemplate({ page }: { page: SEOPage }) {
     <>
       <SEOJsonLd data={schema} />
       <PageHero page={page} eyebrow="Educational resource" />
+
+      {detail && (
+        <div className="border-b border-slate-200 bg-mist">
+          <Container className="flex flex-wrap items-center justify-between gap-4 py-4 text-sm text-slate-600">
+            <span>Last updated {detail.lastUpdated}</span>
+            <div className="flex flex-wrap gap-2">
+              {detail.sections.map((section) => (
+                <a key={section.id} href={`#${section.id}`} className="rounded-full border border-slate-200 bg-white px-3 py-1 font-semibold text-slate-700 hover:border-blue hover:text-blue">{section.title}</a>
+              ))}
+            </div>
+          </Container>
+        </div>
+      )}
+
       <Section>
-        <Container className="grid gap-10 lg:grid-cols-[1fr_320px]">
-          <article className="space-y-12">
+        <Container className="max-w-3xl">
+          <article className="space-y-14">
             {detail && (
               <>
-                <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
-                  <p className="text-sm font-bold uppercase tracking-[0.25em] text-blue">Last updated</p>
-                  <p className="mt-2 text-slate-700">{detail.lastUpdated}</p>
-                  <p className="mt-4 leading-7 text-slate-600">{detail.complianceNote}</p>
-                </div>
+                <p className="text-lg leading-8 text-slate-600">{detail.complianceNote}</p>
 
-                <nav className="rounded-3xl bg-mist p-6" aria-label="Table of contents">
-                  <h2 className="text-2xl font-black text-navy">Table of contents</h2>
-                  <ol className="mt-4 grid gap-2 text-slate-700">
-                    {detail.sections.map((section) => (
-                      <li key={section.id}>
-                        <a href={`#${section.id}`} className="font-semibold hover:text-blue">{section.title}</a>
-                      </li>
-                    ))}
-                  </ol>
-                </nav>
-
-                <section className="rounded-3xl border border-slate-200 bg-mist p-6">
-                  <h2 className="text-2xl font-black text-navy">{detail.conversionCta.heading}</h2>
+                <div className="rounded-3xl border border-blue/20 bg-blue/5 p-6">
+                  <h2 className="font-display text-2xl font-semibold text-navy">{detail.conversionCta.heading}</h2>
                   <p className="mt-3 text-slate-600">{detail.conversionCta.body}</p>
                   <Link href={detail.conversionCta.href} className="mt-5 inline-flex rounded-full bg-blue px-5 py-3 text-sm font-bold text-white transition hover:bg-navy">
                     {detail.conversionCta.label}
                   </Link>
-                </section>
+                </div>
 
                 {detail.sections.map((section) => (
                   <section key={section.id} id={section.id} className="scroll-mt-24">
-                    <h2 className="text-3xl font-black text-navy">{section.title}</h2>
+                    <h2 className="font-display text-3xl font-semibold text-navy">{section.title}</h2>
                     <p className="mt-4 text-lg leading-8 text-slate-600">{section.body}</p>
-                    <div className="mt-6 grid gap-4 md:grid-cols-2">
+                    <div className="mt-6 grid gap-4 sm:grid-cols-2">
                       {section.points.map((point) => (
                         <div key={point.title} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
-                          <h3 className="text-xl font-black text-navy">{point.title}</h3>
-                          <p className="mt-3 leading-7 text-slate-600">{point.body}</p>
+                          <h3 className="text-lg font-bold text-navy">{point.title}</h3>
+                          <p className="mt-2 leading-7 text-slate-600">{point.body}</p>
                         </div>
                       ))}
                     </div>
                   </section>
                 ))}
 
-                <section>
-                  <h2 className="text-3xl font-black text-navy">Commercial service pages mentioned in this guide</h2>
-                  <div className="mt-6 flex flex-wrap gap-3">
+                <div>
+                  <h2 className="font-display text-2xl font-semibold text-navy">Commercial service pages mentioned in this guide</h2>
+                  <div className="mt-5 flex flex-wrap gap-3">
                     {detail.serviceLinks.map((item) => (
                       <Link key={item.href} href={item.href} className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 transition hover:border-blue hover:text-blue">
                         {item.label}
                       </Link>
                     ))}
                   </div>
-                </section>
+                </div>
               </>
             )}
 
-            <section>
-              <h2 className="text-3xl font-black text-navy">More on this topic</h2>
-              <div className="mt-6 space-y-6">
-                {page.sections.map((section) => (
-                  <div key={section.heading}>
-                    <h3 className="text-2xl font-black text-navy">{section.heading}</h3>
-                    <p className="mt-3 text-lg leading-8 text-slate-600">{section.body}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section>
-              <h2 className="text-3xl font-black text-navy">FAQ</h2>
-              <div className="mt-6">
-                <FAQSection items={page.faq} />
-              </div>
-            </section>
-            <RelatedLinks page={page} />
-              <InternalLinks page={page} />
-          </article>
-          <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
-              <h2 className="text-2xl font-black text-navy">{page.cta.heading}</h2>
-              <p className="mt-3 text-slate-600">{page.cta.body}</p>
-              <Link href={page.cta.href} className="mt-5 inline-flex rounded-full bg-blue px-5 py-3 text-sm font-bold text-white transition hover:bg-navy">
-                {page.cta.label}
-              </Link>
+            <div className="space-y-8">
+              <h2 className="font-display text-2xl font-semibold text-navy">More on this topic</h2>
+              {page.sections.map((section) => (
+                <div key={section.heading}>
+                  <h3 className="text-xl font-bold text-navy">{section.heading}</h3>
+                  <p className="mt-2 text-lg leading-8 text-slate-600">{section.body}</p>
+                </div>
+              ))}
             </div>
-          </aside>
+          </article>
         </Container>
       </Section>
+
+      <section className="border-y border-slate-200 bg-mist py-16">
+        <Container className="max-w-3xl rounded-3xl border border-slate-200 bg-white p-8 shadow-soft">
+          <h2 className="font-display text-2xl font-semibold text-navy">{page.cta.heading}</h2>
+          <p className="mt-3 text-slate-600">{page.cta.body}</p>
+          <Link href={page.cta.href} className="mt-5 inline-flex rounded-full bg-blue px-5 py-3 text-sm font-bold text-white transition hover:bg-navy">
+            {page.cta.label}
+          </Link>
+        </Container>
+      </section>
+
+      <Section>
+        <Container className="max-w-3xl space-y-10">
+          <div>
+            <h2 className="font-display text-2xl font-semibold text-navy">Frequently asked questions</h2>
+            <div className="mt-6">
+              <FAQSection items={page.faq} />
+            </div>
+          </div>
+          <div>
+            <h2 className="font-display text-2xl font-semibold text-navy">Continue exploring</h2>
+            <div className="mt-6 space-y-6">
+              <RelatedLinks page={page} />
+              <InternalLinks page={page} />
+            </div>
+          </div>
+        </Container>
+      </Section>
+
       <CTASection />
     </>
   );

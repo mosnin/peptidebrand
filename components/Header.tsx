@@ -86,7 +86,7 @@ export function Header() {
                   </div>
                   <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-mist px-6 py-5">
                     <div>
-                      <p className="text-sm font-black text-navy">100% free 1-on-1 consultations — every time.</p>
+                      <p className="text-sm font-black text-navy">100% free 1-on-1 consultations, every time.</p>
                       <p className="mt-1 text-xs text-slate-600">USA-based manufacturers only. 99%+ purity. No cost to connect with a supplier.</p>
                     </div>
                     <Link href="/quote" onClick={() => setServicesOpen(false)} className="shrink-0 rounded-full bg-blue px-5 py-2.5 text-sm font-black text-white transition hover:bg-navy">Get a Free Quote</Link>
@@ -112,7 +112,7 @@ export function Header() {
           <Container className="grid gap-8 py-8">
             <div className="rounded-3xl border border-slate-200 bg-mist p-5">
               <p className="text-sm font-black text-navy">100% free 1-on-1 consultations</p>
-              <p className="mt-1 text-xs text-slate-600">USA-based manufacturers, 99%+ purity, hundreds of vetted partners — free to connect, always.</p>
+              <p className="mt-1 text-xs text-slate-600">USA-based manufacturers, 99%+ purity, hundreds of vetted partners. Free to connect, always.</p>
             </div>
             {serviceMegaMenu.map((group) => (
               <div key={group.title}>

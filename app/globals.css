@@ -10,7 +10,8 @@ a { text-decoration: none; }
 ::selection { background: #1d4ed8; color: #ffffff; }
 
 @layer base {
-  h1, h2 { letter-spacing: -0.025em; }
+  h1, h2, h3, h4 { font-family: var(--font-display), Georgia, Cambria, serif; letter-spacing: -0.02em; font-weight: 600; }
+  h1 { letter-spacing: -0.03em; }
   :focus-visible { outline: 3px solid #1d4ed8; outline-offset: 3px; }
 }
 

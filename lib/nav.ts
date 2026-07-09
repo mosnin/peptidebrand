@@ -14,7 +14,7 @@ export const serviceMegaMenu: NavGroup[] = [
     title: 'Sourcing & Supplier Network',
     links: [
       { href: '/wholesale-peptides', label: 'Wholesale Peptides', description: 'Bulk inventory sourcing from vetted USA-based manufacturers.' },
-      { href: '/research-peptide-supplier', label: 'Manufacturer Network', description: "We're connected with hundreds of manufacturers — free to connect, always." },
+      { href: '/research-peptide-supplier', label: 'Manufacturer Network', description: "We're connected with hundreds of manufacturers. Free to connect, always." },
     ],
   },
   {
