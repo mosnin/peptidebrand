@@ -3,6 +3,7 @@ import { Inter, Source_Serif_4 } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 import { StickyMobileCTA } from '@/components/StickyMobileCTA';
 import { SEOJsonLd } from '@/components/SEOJsonLd';
 import { createMetadata, organizationSchema, websiteSchema } from '@/lib/seo';
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`${inter.variable} ${sourceSerif.variable}`}>
       <body>
+        <GoogleAnalytics />
         <SEOJsonLd data={identitySchema} />
         <Header />
         <main>{children}</main>

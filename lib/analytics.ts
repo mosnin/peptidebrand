@@ -10,6 +10,7 @@ type ConversionEvent = {
 declare global {
   interface Window {
     dataLayer?: ConversionEvent[];
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
@@ -17,5 +18,6 @@ export function trackConversion(event: ConversionEvent) {
   if (typeof window === 'undefined') return;
   window.dataLayer = window.dataLayer ?? [];
   window.dataLayer.push(event);
+  window.gtag?.('event', event.event, { form_name: event.formName, form_variant: event.formVariant, page_path: event.pagePath });
   window.dispatchEvent(new CustomEvent('peptidebrand:conversion', { detail: event }));
 }
