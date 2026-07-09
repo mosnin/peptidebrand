@@ -4,12 +4,12 @@ import { Container } from '@/components/Container';
 import { CTASection } from '@/components/CTASection';
 import { FAQSection } from '@/components/FAQSection';
 import { InternalLinks } from '@/components/InternalLinks';
-import { KeywordPanel } from '@/components/KeywordPanel';
 import { LeadForm, type LeadFormVariant } from '@/components/LeadForm';
 import { PageHero } from '@/components/PageHero';
 import { RelatedLinks } from '@/components/RelatedLinks';
 import { SEOJsonLd } from '@/components/SEOJsonLd';
 import { Section } from '@/components/Section';
+import { TrustBadges } from '@/components/TrustBadges';
 import { brandAssets } from '@/lib/assets';
 import { breadcrumbSchema, faqSchema, serviceSchema } from '@/lib/schema';
 import { getServicePageDetail, researchUseDisclaimer } from '@/lib/service-page-details';
@@ -44,14 +44,14 @@ export function ServicePageTemplate({ page }: { page: SEOPage }) {
       <Section>
         <Container className="grid gap-10 lg:grid-cols-[1fr_340px]">
           <div className="space-y-12">
-            <div className="rounded-3xl border border-teal/20 bg-teal/10 p-6">
+            <div className="rounded-3xl border border-blue/20 bg-blue/5 p-6">
               <h2 className="text-xl font-black text-navy">Research-use-only disclaimer</h2>
               <p className="mt-3 leading-7 text-slate-700">{researchUseDisclaimer}</p>
             </div>
 
             <section>
-              <p className="text-sm font-bold uppercase tracking-[0.25em] text-teal">Commercial overview</p>
-              <h2 className="mt-3 text-3xl font-black text-navy">A practical service page for {page.targetKeyword} decisions</h2>
+              <p className="text-sm font-bold uppercase tracking-[0.25em] text-blue">Overview</p>
+              <h2 className="mt-3 text-3xl font-black text-navy">{page.h1}</h2>
               <p className="mt-4 text-lg leading-8 text-slate-600">{page.intro}</p>
               {contextImage && (
                 <div className="mt-6 overflow-hidden rounded-3xl border border-slate-200 shadow-soft">
@@ -89,7 +89,7 @@ export function ServicePageTemplate({ page }: { page: SEOPage }) {
                   <div className="mt-6 grid gap-4 md:grid-cols-4">
                     {detail.process.map((item, index) => (
                       <div key={item.step} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
-                        <p className="text-sm font-black text-teal">0{index + 1}</p>
+                        <p className="text-sm font-black text-blue">0{index + 1}</p>
                         <h3 className="mt-3 text-xl font-black text-navy">{item.step}</h3>
                         <p className="mt-3 text-sm leading-6 text-slate-600">{item.body}</p>
                       </div>
@@ -121,7 +121,7 @@ export function ServicePageTemplate({ page }: { page: SEOPage }) {
                   <h2 className="text-3xl font-black text-navy">Adjacent service pages</h2>
                   <div className="mt-6 flex flex-wrap gap-3">
                     {detail.adjacentLinks.map((item) => (
-                      <Link key={item.href} href={item.href} className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 transition hover:border-teal hover:text-teal">
+                      <Link key={item.href} href={item.href} className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 transition hover:border-blue hover:text-blue">
                         {item.label}
                       </Link>
                     ))}
@@ -131,7 +131,7 @@ export function ServicePageTemplate({ page }: { page: SEOPage }) {
             )}
 
             <section>
-              <h2 className="text-3xl font-black text-navy">Additional planning notes</h2>
+              <h2 className="text-3xl font-black text-navy">Key considerations</h2>
               <div className="mt-6 space-y-6">
                 {page.sections.map((section) => (
                   <div key={section.heading}>
@@ -158,7 +158,12 @@ export function ServicePageTemplate({ page }: { page: SEOPage }) {
             </section>
           </div>
           <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
-            <KeywordPanel page={page} />
+            <div className="rounded-3xl border border-slate-200 bg-mist p-6">
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue">Why work with us</p>
+              <h2 className="mt-3 text-xl font-black text-navy">USA-based, 99%+ purity, always free to connect</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-600">Every consultation is 100% free. We only work with USA-based, lab-created manufacturers, and you get 1-on-1 support from the first reply.</p>
+              <TrustBadges className="mt-5" />
+            </div>
             <LeadForm variant={formVariant} />
           </aside>
         </Container>

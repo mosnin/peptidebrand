@@ -6,8 +6,8 @@ export function MoleculeCard({ title = 'Research supply architecture', body = 'S
         {[[0,1],[1,2],[2,3],[1,4],[4,5],[0,5]].map(([a,b]) => <line key={`${a}-${b}`} x1={nodes[a][0]} y1={nodes[a][1]} x2={nodes[b][0]} y2={nodes[b][1]} stroke="rgba(104,232,255,0.35)" strokeWidth="2" />)}
         {nodes.map(([cx, cy], index) => <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r={index % 2 ? 10 : 14} fill={index % 2 ? '#19b7b5' : '#68e8ff'} opacity="0.9" />)}
       </svg>
-      <h3 className="text-xl font-black text-white">{title}</h3>
-      <p className="mt-3 text-sm leading-6 text-white/70">{body}</p>
+      <h3 className="text-xl font-black text-navy">{title}</h3>
+      <p className="mt-3 text-sm leading-6 text-slate-600">{body}</p>
     </div>
   );
 }

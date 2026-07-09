@@ -3,7 +3,6 @@ import { Container } from '@/components/Container';
 import { CTASection } from '@/components/CTASection';
 import { FAQSection } from '@/components/FAQSection';
 import { InternalLinks } from '@/components/InternalLinks';
-import { KeywordPanel } from '@/components/KeywordPanel';
 import { PageHero } from '@/components/PageHero';
 import { RelatedLinks } from '@/components/RelatedLinks';
 import { SEOJsonLd } from '@/components/SEOJsonLd';
@@ -35,7 +34,7 @@ export function ResourcePageTemplate({ page }: { page: SEOPage }) {
             {detail && (
               <>
                 <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
-                  <p className="text-sm font-bold uppercase tracking-[0.25em] text-teal">Last updated</p>
+                  <p className="text-sm font-bold uppercase tracking-[0.25em] text-blue">Last updated</p>
                   <p className="mt-2 text-slate-700">{detail.lastUpdated}</p>
                   <p className="mt-4 leading-7 text-slate-600">{detail.complianceNote}</p>
                 </div>
@@ -45,16 +44,16 @@ export function ResourcePageTemplate({ page }: { page: SEOPage }) {
                   <ol className="mt-4 grid gap-2 text-slate-700">
                     {detail.sections.map((section) => (
                       <li key={section.id}>
-                        <a href={`#${section.id}`} className="font-semibold hover:text-teal">{section.title}</a>
+                        <a href={`#${section.id}`} className="font-semibold hover:text-blue">{section.title}</a>
                       </li>
                     ))}
                   </ol>
                 </nav>
 
-                <section className="rounded-3xl bg-navy p-6 text-white">
-                  <h2 className="text-2xl font-black">{detail.conversionCta.heading}</h2>
-                  <p className="mt-3 text-white/75">{detail.conversionCta.body}</p>
-                  <Link href={detail.conversionCta.href} className="mt-5 inline-flex rounded-full bg-teal px-5 py-3 text-sm font-bold text-white transition hover:bg-teal/90">
+                <section className="rounded-3xl border border-slate-200 bg-mist p-6">
+                  <h2 className="text-2xl font-black text-navy">{detail.conversionCta.heading}</h2>
+                  <p className="mt-3 text-slate-600">{detail.conversionCta.body}</p>
+                  <Link href={detail.conversionCta.href} className="mt-5 inline-flex rounded-full bg-blue px-5 py-3 text-sm font-bold text-white transition hover:bg-navy">
                     {detail.conversionCta.label}
                   </Link>
                 </section>
@@ -78,7 +77,7 @@ export function ResourcePageTemplate({ page }: { page: SEOPage }) {
                   <h2 className="text-3xl font-black text-navy">Commercial service pages mentioned in this guide</h2>
                   <div className="mt-6 flex flex-wrap gap-3">
                     {detail.serviceLinks.map((item) => (
-                      <Link key={item.href} href={item.href} className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 transition hover:border-teal hover:text-teal">
+                      <Link key={item.href} href={item.href} className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 transition hover:border-blue hover:text-blue">
                         {item.label}
                       </Link>
                     ))}
@@ -88,7 +87,7 @@ export function ResourcePageTemplate({ page }: { page: SEOPage }) {
             )}
 
             <section>
-              <h2 className="text-3xl font-black text-navy">Additional notes</h2>
+              <h2 className="text-3xl font-black text-navy">More on this topic</h2>
               <div className="mt-6 space-y-6">
                 {page.sections.map((section) => (
                   <div key={section.heading}>
@@ -109,11 +108,10 @@ export function ResourcePageTemplate({ page }: { page: SEOPage }) {
               <InternalLinks page={page} />
           </article>
           <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
-            <KeywordPanel page={page} />
-            <div className="rounded-3xl bg-white p-6 shadow-soft">
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
               <h2 className="text-2xl font-black text-navy">{page.cta.heading}</h2>
               <p className="mt-3 text-slate-600">{page.cta.body}</p>
-              <Link href={page.cta.href} className="mt-5 inline-flex rounded-full bg-teal px-5 py-3 text-sm font-bold text-white transition hover:bg-teal/90">
+              <Link href={page.cta.href} className="mt-5 inline-flex rounded-full bg-blue px-5 py-3 text-sm font-bold text-white transition hover:bg-navy">
                 {page.cta.label}
               </Link>
             </div>

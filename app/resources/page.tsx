@@ -18,20 +18,20 @@ export default function ResourcesPage() {
         </p>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {resourcePages.map((page) => (
-            <Link key={page.path} href={page.path} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:border-teal">
-              <p className="text-sm font-bold uppercase tracking-[0.2em] text-teal">{page.targetKeyword}</p>
+            <Link key={page.path} href={page.path} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:border-blue">
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue">Guide</p>
               <h2 className="mt-3 text-2xl font-black text-navy">{page.h1}</h2>
               <p className="mt-3 text-slate-600">{page.metaDescription}</p>
             </Link>
           ))}
         </div>
-        <div className="mt-12 grid gap-8 rounded-3xl bg-navy p-6 text-white lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="mt-12 grid gap-8 rounded-3xl border border-slate-200 bg-mist p-6 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.25em] text-gold">Resource download</p>
-            <h2 className="mt-3 text-3xl font-black">Get a research-use brand launch resource.</h2>
-            <p className="mt-4 text-white/70">Request a checklist or guide for sourcing, COAs, packaging, fulfillment, or launch planning.</p>
+            <h2 className="mt-3 text-3xl font-black text-navy">Get a research-use brand launch resource.</h2>
+            <p className="mt-4 text-slate-600">Request a checklist or guide for sourcing, COAs, packaging, fulfillment, or launch planning.</p>
           </div>
-          <LeadForm variant="newsletter" dark />
+          <LeadForm variant="newsletter" />
         </div>
       </Container>
     </Section>
