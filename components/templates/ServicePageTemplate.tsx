@@ -10,6 +10,8 @@ import { RelatedLinks } from '@/components/RelatedLinks';
 import { SEOJsonLd } from '@/components/SEOJsonLd';
 import { Section } from '@/components/Section';
 import { TrustBadges } from '@/components/TrustBadges';
+import { Card, CardContent } from '@/components/ui/Card';
+import { DataList } from '@/components/ui/DataList';
 import { brandAssets } from '@/lib/assets';
 import { breadcrumbSchema, faqSchema, serviceSchema } from '@/lib/schema';
 import { getServicePageDetail, researchUseDisclaimer } from '@/lib/service-page-details';
@@ -68,9 +70,11 @@ export function ServicePageTemplate({ page }: { page: SEOPage }) {
               <h2 className="font-display text-3xl font-semibold text-navy">Who this is for</h2>
               <div className="mt-8 grid gap-4 md:grid-cols-3">
                 {detail.audience.map((item) => (
-                  <div key={item} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
-                    <p className="leading-7 text-slate-600">{item}</p>
-                  </div>
+                  <Card key={item}>
+                    <CardContent>
+                      <p className="leading-7 text-slate-600">{item}</p>
+                    </CardContent>
+                  </Card>
                 ))}
               </div>
             </Container>
@@ -92,13 +96,15 @@ export function ServicePageTemplate({ page }: { page: SEOPage }) {
           <Section className="bg-mist">
             <Container>
               <h2 className="font-display text-3xl font-semibold text-navy">Process</h2>
-              <div className="mt-8 grid gap-6 border-t border-slate-200 pt-8 md:grid-cols-4 md:gap-4 md:border-t-0 md:pt-0">
+              <div className="mt-8 grid gap-4 md:grid-cols-4">
                 {detail.process.map((item, index) => (
-                  <div key={item.step} className="md:rounded-2xl md:border md:border-slate-200 md:bg-white md:p-5 md:shadow-soft">
-                    <p className="font-display text-2xl font-semibold text-blue">0{index + 1}</p>
-                    <h3 className="mt-2 text-lg font-bold text-navy">{item.step}</h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-600">{item.body}</p>
-                  </div>
+                  <Card key={item.step}>
+                    <CardContent>
+                      <p className="font-display text-2xl font-semibold text-blue">0{index + 1}</p>
+                      <h3 className="mt-2 text-lg font-bold text-navy">{item.step}</h3>
+                      <p className="mt-2 text-sm leading-6 text-slate-600">{item.body}</p>
+                    </CardContent>
+                  </Card>
                 ))}
               </div>
             </Container>
@@ -145,6 +151,15 @@ export function ServicePageTemplate({ page }: { page: SEOPage }) {
             <p className="text-sm font-bold uppercase tracking-[0.25em] text-blue">Why work with us</p>
             <h2 className="mt-3 font-display text-3xl font-semibold text-navy">USA-based, 99%+ purity, always free to connect</h2>
             <p className="mt-4 leading-7 text-slate-600">Every consultation is 100% free. We only work with USA-based, lab-created manufacturers, and you get 1-on-1 support from the first reply.</p>
+            <DataList
+              className="mt-6"
+              items={[
+                { label: 'Purity standard', value: '99%+' },
+                { label: 'Consultation cost', value: '$0' },
+                { label: 'Manufacturer network', value: '100s' },
+                { label: 'Support model', value: '1-on-1' },
+              ]}
+            />
             <TrustBadges className="mt-6" />
             {detail && detail.adjacentLinks.length > 0 && (
               <div className="mt-8 flex flex-wrap gap-3">
