@@ -11,7 +11,7 @@ const root = process.cwd();
 const filesToScan = ['app', 'components', 'lib'].flatMap((directory) => walk(directory));
 const appPageFiles = walk('app').filter((file) => file.endsWith('page.tsx'));
 const noindexRoutes = ['/thank-you', '/quote-submitted', '/resource-requested'];
-const coreRoutes = ['/', '/services', '/resources', '/topics', '/contact', '/quote', '/compliance', ...noindexRoutes];
+const coreRoutes = ['/', '/services', '/resources', '/topics', '/contact', '/quote', '/compliance', '/privacy-policy', '/terms-of-service', ...noindexRoutes];
 
 function walk(directory: string): string[] {
   return readdirSync(directory).flatMap((entry: string) => {

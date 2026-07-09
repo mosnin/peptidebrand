@@ -38,7 +38,14 @@ export function Footer() {
             </div>
           </div>
         </div>
-        <p className="mt-10 border-t border-slate-200 pt-6 text-xs text-slate-500">© {new Date().getFullYear()} {siteConfig.name}. Research-use-only information. No competitor assets imported.</p>
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-slate-200 pt-6 text-xs text-slate-500">
+          <p>© {new Date().getFullYear()} {siteConfig.name}. Research-use-only information. No competitor assets imported.</p>
+          <div className="flex flex-wrap gap-4">
+            <Link href="/privacy-policy" className="hover:text-blue">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="hover:text-blue">Terms of Service</Link>
+            <Link href="/compliance" className="hover:text-blue">Compliance</Link>
+          </div>
+        </div>
       </Container>
     </footer>
   );
