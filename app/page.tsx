@@ -10,6 +10,7 @@ import { LeadForm } from '@/components/LeadForm';
 import { ProcessTimeline } from '@/components/ProcessTimeline';
 import { SEOJsonLd } from '@/components/SEOJsonLd';
 import { Section } from '@/components/Section';
+import { FadeIn } from '@/components/motion/FadeIn';
 import { brandAssets } from '@/lib/assets';
 import { serviceMegaMenu } from '@/lib/nav';
 import { createMetadata, organizationSchema, websiteSchema } from '@/lib/seo';
@@ -86,7 +87,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/10 to-transparent" />
         <Container className="relative py-24 lg:py-32">
-          <div className="max-w-3xl">
+          <FadeIn className="max-w-3xl">
             <p className="text-sm font-bold uppercase tracking-[0.3em] text-white/70">USA-based. Lab-created. 100% free consultations.</p>
             <h1 className="mt-5 font-display text-5xl font-semibold tracking-tight text-white sm:text-7xl">USA-made peptide brands, backed by 99%+ purity.</h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/75">We connect research-use brands with hundreds of vetted, USA-based peptide manufacturers for wholesale sourcing, white label, and full private label brand creation, with free 1-on-1 support from day one.</p>
@@ -94,15 +95,15 @@ export default function HomePage() {
               <Button href="#lead-capture">Get a free consultation</Button>
               <Button href="/research-peptide-supplier" variant="onDark">See our manufacturer network</Button>
             </div>
-          </div>
-          <div className="mt-14 grid gap-4 border-t border-white/10 pt-10 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-white/10">
+          </FadeIn>
+          <FadeIn delay={0.15} className="mt-14 grid gap-4 border-t border-white/10 pt-10 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-white/10">
             {stats.map((stat) => (
               <div key={stat.label} className="lg:px-8 lg:first:pl-0">
                 <p className="font-display text-4xl font-semibold text-white">{stat.value}</p>
                 <p className="mt-1 text-sm text-white/60">{stat.label}</p>
               </div>
             ))}
-          </div>
+          </FadeIn>
         </Container>
       </section>
 
@@ -123,7 +124,7 @@ export default function HomePage() {
 
       <Section>
         <Container className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div>
+          <FadeIn>
             <p className="text-sm font-bold uppercase tracking-[0.25em] text-blue">Why founders work with us</p>
             <h2 className="mt-3 font-display text-4xl font-semibold text-navy sm:text-5xl">Sourcing shouldn&apos;t cost you anything until you&apos;re ready to buy.</h2>
             <p className="mt-5 text-xl leading-9 text-slate-600">Most peptide brand founders are not blocked by demand. They&apos;re blocked by trust. Which manufacturer is actually USA-based? Who tests to 99%+ purity? Who will take a call without a fee attached? We solve that with a free, 1-on-1 introduction to the right partner in a network of hundreds of manufacturers.</p>
@@ -132,20 +133,20 @@ export default function HomePage() {
                 <div key={item} className="rounded-2xl border border-slate-200 bg-mist px-4 py-3 text-sm font-semibold text-navy">{item}</div>
               ))}
             </div>
-          </div>
-          <div className="glass-panel overflow-hidden rounded-4xl p-4">
+          </FadeIn>
+          <FadeIn delay={0.1} className="glass-panel overflow-hidden rounded-4xl p-4">
             <Image src={brandAssets.peptideChain} alt="Molecular structure rendering representing lab-created, USA-tested research peptide chains" width={800} height={800} className="mx-auto h-80 w-auto object-contain" quality={90} />
-          </div>
+          </FadeIn>
         </Container>
       </Section>
 
       <Section className="bg-mist">
         <Container>
-          <div className="max-w-2xl">
+          <FadeIn className="max-w-2xl">
             <p className="text-sm font-bold uppercase tracking-[0.25em] text-blue">What we do</p>
             <h2 className="mt-3 font-display text-4xl font-semibold text-navy sm:text-5xl">From inventory sourcing to full brand creation.</h2>
             <p className="mt-4 text-lg leading-7 text-slate-600">No generic catch-all page. Explore the exact service you need, with a dedicated page for every step of the process.</p>
-          </div>
+          </FadeIn>
           <div className="mt-12 border-t border-slate-200">
             {serviceMegaMenu.map((group, index) => (
               <div key={group.title} className="grid gap-6 border-b border-slate-200 py-10 lg:grid-cols-[100px_1fr_1.4fr]">
@@ -167,7 +168,7 @@ export default function HomePage() {
 
       <Section>
         <Container className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div>
+          <FadeIn>
             <p className="text-sm font-bold uppercase tracking-[0.25em] text-blue">Verified quality, real brand creation</p>
             <h2 className="mt-3 font-display text-4xl font-semibold text-navy sm:text-5xl">99%+ purity and a shelf-ready catalog, documented every step.</h2>
             <p className="mt-4 text-lg leading-8 text-slate-600">White label and private label programs include custom packaging, printed labels, lot codes, research-use-only disclaimers, and certificate of analysis access, built around USA-based manufacturing and third-party purity testing.</p>
@@ -175,8 +176,8 @@ export default function HomePage() {
               <Button href="/white-label-peptides">Explore white label</Button>
               <Button href="/peptide-lab-testing" variant="secondary">See lab testing support</Button>
             </div>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
+          </FadeIn>
+          <FadeIn delay={0.1} className="grid grid-cols-2 gap-4">
             <div className="row-span-2 overflow-hidden rounded-3xl border border-slate-200 shadow-soft">
               <Image src={brandAssets.whiteLabelInventory} alt="White label peptide packaging, boxes, vials, and certificate of analysis ready for private label brand creation" width={700} height={900} className="h-full w-full object-cover" quality={90} />
             </div>
@@ -186,7 +187,7 @@ export default function HomePage() {
             <div className="overflow-hidden rounded-3xl border border-slate-200 shadow-soft">
               <Image src={brandAssets.hplcInterface} alt="HPLC analysis dashboard confirming 99.12 percent research peptide purity with a pass result" width={700} height={440} className="h-full w-full object-cover" quality={90} />
             </div>
-          </div>
+          </FadeIn>
         </Container>
       </Section>
 
