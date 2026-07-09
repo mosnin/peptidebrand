@@ -6,7 +6,7 @@ import { brandAssets } from '@/lib/assets';
 export function CTASection() {
   return (
     <section className="relative overflow-hidden bg-navy py-20 text-white sm:py-28">
-      <Image src={brandAssets.heroScientists} alt="USA-based laboratory scientists preparing and reviewing research peptide vials" fill sizes="100vw" className="object-cover" />
+      <Image src={brandAssets.heroScientists} alt="USA-based laboratory scientists preparing and reviewing research peptide vials" fill sizes="100vw" className="object-cover" quality={90} />
       <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/60" />
       <Container className="relative grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
         <div>

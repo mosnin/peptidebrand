@@ -25,7 +25,7 @@ export function createMetadata({ title, description = siteConfig.description, pa
 }
 
 export function organizationSchema() {
-  return { '@context': 'https://schema.org', '@type': 'Organization', name: siteConfig.name, url: siteConfig.url, email: siteConfig.email };
+  return { '@context': 'https://schema.org', '@type': 'Organization', name: siteConfig.name, url: siteConfig.url, email: siteConfig.email, telephone: siteConfig.phone };
 }
 
 export function websiteSchema() {

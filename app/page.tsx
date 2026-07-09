@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { FlaskConical, MapPinned, ShieldCheck, Tags, UsersRound, Warehouse } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/Button';
@@ -28,7 +29,14 @@ const stats = [
   { value: '1-on-1', label: 'Dedicated support, every account' },
 ];
 
-const trustItems = ['USA-based manufacturers', 'Lab-created & tested', '99%+ purity verified', 'Free 1-on-1 consultations', 'White label & private label', 'Hundreds of vetted suppliers'];
+const trustItems = [
+  { icon: MapPinned, label: 'USA-based manufacturers' },
+  { icon: FlaskConical, label: 'Lab-created & tested' },
+  { icon: ShieldCheck, label: '99%+ purity verified' },
+  { icon: UsersRound, label: 'Free 1-on-1 consultations' },
+  { icon: Tags, label: 'White label & private label' },
+  { icon: Warehouse, label: 'Hundreds of vetted suppliers' },
+];
 
 const proofPoints = ['No cost to connect with a supplier', 'Only USA-based labs and manufacturers', '99%+ purity, lab-verified', 'Full white label brand creation'];
 
@@ -74,7 +82,7 @@ export default function HomePage() {
       <SEOJsonLd data={[organizationSchema(), websiteSchema(), faqSchema(faqItems)]} />
 
       <section className="relative overflow-hidden bg-navy">
-        <Image src={brandAssets.heroBackground} alt="Glowing map of connected USA-based peptide manufacturing partners linked to molecular research imagery" fill priority sizes="100vw" className="object-cover" />
+        <Image src={brandAssets.heroBackground} alt="Glowing map of connected USA-based peptide manufacturing partners linked to molecular research imagery" fill priority sizes="100vw" className="object-cover" quality={90} />
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/10 to-transparent" />
         <Container className="relative py-24 lg:py-32">
@@ -98,11 +106,16 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section className="border-b border-slate-200 bg-white py-5">
+      <section className="border-b border-slate-200 bg-white py-10">
         <Container>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-6 lg:divide-x lg:divide-slate-200">
             {trustItems.map((item) => (
-              <div key={item} className="rounded-full border border-slate-200 bg-mist px-4 py-3 text-center text-sm font-bold text-navy">{item}</div>
+              <div key={item.label} className="flex items-center gap-3 lg:flex-col lg:items-center lg:gap-2 lg:px-4 lg:text-center lg:first:pl-0">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue/10 text-blue">
+                  <item.icon size={20} strokeWidth={2} aria-hidden="true" />
+                </span>
+                <p className="text-sm font-bold text-navy">{item.label}</p>
+              </div>
             ))}
           </div>
         </Container>
@@ -121,7 +134,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="glass-panel overflow-hidden rounded-4xl p-4">
-            <Image src={brandAssets.peptideChain} alt="Molecular structure rendering representing lab-created, USA-tested research peptide chains" width={800} height={800} className="mx-auto h-80 w-auto object-contain" />
+            <Image src={brandAssets.peptideChain} alt="Molecular structure rendering representing lab-created, USA-tested research peptide chains" width={800} height={800} className="mx-auto h-80 w-auto object-contain" quality={90} />
           </div>
         </Container>
       </Section>
@@ -165,13 +178,13 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="row-span-2 overflow-hidden rounded-3xl border border-slate-200 shadow-soft">
-              <Image src={brandAssets.whiteLabelInventory} alt="White label peptide packaging, boxes, vials, and certificate of analysis ready for private label brand creation" width={700} height={900} className="h-full w-full object-cover" />
+              <Image src={brandAssets.whiteLabelInventory} alt="White label peptide packaging, boxes, vials, and certificate of analysis ready for private label brand creation" width={700} height={900} className="h-full w-full object-cover" quality={90} />
             </div>
             <div className="overflow-hidden rounded-3xl border border-slate-200 shadow-soft">
-              <Image src={brandAssets.coaStack} alt="Certificate of analysis showing 99.7 percent peptide purity results from independent lab testing" width={700} height={440} className="h-full w-full object-cover" />
+              <Image src={brandAssets.coaStack} alt="Certificate of analysis showing 99.7 percent peptide purity results from independent lab testing" width={700} height={440} className="h-full w-full object-cover" quality={90} />
             </div>
             <div className="overflow-hidden rounded-3xl border border-slate-200 shadow-soft">
-              <Image src={brandAssets.hplcInterface} alt="HPLC analysis dashboard confirming 99.12 percent research peptide purity with a pass result" width={700} height={440} className="h-full w-full object-cover" />
+              <Image src={brandAssets.hplcInterface} alt="HPLC analysis dashboard confirming 99.12 percent research peptide purity with a pass result" width={700} height={440} className="h-full w-full object-cover" quality={90} />
             </div>
           </div>
         </Container>
@@ -198,7 +211,7 @@ export default function HomePage() {
             <Button href="/wholesale-peptides" className="mt-6">Explore wholesale sourcing</Button>
           </div>
           <div className="glass-panel overflow-hidden rounded-4xl p-3">
-            <Image src={brandAssets.vialsColdStorage} alt="Rows of research peptide vials in cold storage at a USA-based manufacturing facility" width={1200} height={800} className="rounded-3xl object-cover" />
+            <Image src={brandAssets.vialsColdStorage} alt="Rows of research peptide vials in cold storage at a USA-based manufacturing facility" width={1200} height={800} className="rounded-3xl object-cover" quality={90} />
           </div>
         </Container>
       </Section>

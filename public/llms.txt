@@ -6,41 +6,41 @@ All information on this site concerns laboratory research-use-only supply chains
 
 ## Company
 
-- Homepage: https://peptidebrand.com/ — overview of manufacturer network, purity standards, and free consultation model.
-- Compliance stance: https://peptidebrand.com/compliance
-- Contact: https://peptidebrand.com/contact
-- Request a quote / free consultation: https://peptidebrand.com/quote
+- Homepage: https://peptidebrand.org/ — overview of manufacturer network, purity standards, and free consultation model.
+- Compliance stance: https://peptidebrand.org/compliance
+- Contact: https://peptidebrand.org/contact
+- Request a quote / free consultation: https://peptidebrand.org/quote
 
 ## Services
 
-- All services overview: https://peptidebrand.com/services
-- White label peptides: https://peptidebrand.com/white-label-peptides
-- Private label peptides: https://peptidebrand.com/private-label-peptides
-- Start a peptide brand: https://peptidebrand.com/start-a-peptide-brand
-- Wholesale peptides: https://peptidebrand.com/wholesale-peptides
-- Research peptide supplier / manufacturer network: https://peptidebrand.com/research-peptide-supplier
-- HPLC & LCMS lab testing: https://peptidebrand.com/peptide-lab-testing
-- COA & batch testing: https://peptidebrand.com/peptide-coa-testing
-- Custom packaging & labels: https://peptidebrand.com/peptide-packaging
-- Fulfillment: https://peptidebrand.com/peptide-fulfillment
+- All services overview: https://peptidebrand.org/services
+- White label peptides: https://peptidebrand.org/white-label-peptides
+- Private label peptides: https://peptidebrand.org/private-label-peptides
+- Start a peptide brand: https://peptidebrand.org/start-a-peptide-brand
+- Wholesale peptides: https://peptidebrand.org/wholesale-peptides
+- Research peptide supplier / manufacturer network: https://peptidebrand.org/research-peptide-supplier
+- HPLC & LCMS lab testing: https://peptidebrand.org/peptide-lab-testing
+- COA & batch testing: https://peptidebrand.org/peptide-coa-testing
+- Custom packaging & labels: https://peptidebrand.org/peptide-packaging
+- Fulfillment: https://peptidebrand.org/peptide-fulfillment
 
 ## Resource Center
 
-Long-form guides on research peptide sourcing, supplier due diligence, testing, packaging, and brand launch planning: https://peptidebrand.com/resources
+Long-form guides on research peptide sourcing, supplier due diligence, testing, packaging, and brand launch planning: https://peptidebrand.org/resources
 
-- How to start a peptide brand: https://peptidebrand.com/resources/how-to-start-a-peptide-brand
-- Peptide supplier checklist: https://peptidebrand.com/resources/peptide-supplier-checklist
-- What is a peptide COA: https://peptidebrand.com/resources/what-is-a-peptide-coa
-- HPLC vs LCMS peptide testing: https://peptidebrand.com/resources/hplc-vs-lcms-peptide-testing
-- Research-use-only labeling guide: https://peptidebrand.com/resources/research-use-only-labeling-guide
-- White label vs private label peptides: https://peptidebrand.com/resources/white-label-vs-private-label-peptides
-- Peptide fulfillment checklist: https://peptidebrand.com/resources/peptide-fulfillment-checklist
-- How to verify a peptide supplier: https://peptidebrand.com/resources/how-to-verify-a-peptide-supplier
-- Peptide brand launch checklist: https://peptidebrand.com/resources/peptide-brand-launch-checklist
-- Peptide packaging and labeling guide: https://peptidebrand.com/resources/peptide-packaging-and-labeling-guide
-- Sourcing guides by compound: https://peptidebrand.com/topics
+- How to start a peptide brand: https://peptidebrand.org/resources/how-to-start-a-peptide-brand
+- Peptide supplier checklist: https://peptidebrand.org/resources/peptide-supplier-checklist
+- What is a peptide COA: https://peptidebrand.org/resources/what-is-a-peptide-coa
+- HPLC vs LCMS peptide testing: https://peptidebrand.org/resources/hplc-vs-lcms-peptide-testing
+- Research-use-only labeling guide: https://peptidebrand.org/resources/research-use-only-labeling-guide
+- White label vs private label peptides: https://peptidebrand.org/resources/white-label-vs-private-label-peptides
+- Peptide fulfillment checklist: https://peptidebrand.org/resources/peptide-fulfillment-checklist
+- How to verify a peptide supplier: https://peptidebrand.org/resources/how-to-verify-a-peptide-supplier
+- Peptide brand launch checklist: https://peptidebrand.org/resources/peptide-brand-launch-checklist
+- Peptide packaging and labeling guide: https://peptidebrand.org/resources/peptide-packaging-and-labeling-guide
+- Sourcing guides by compound: https://peptidebrand.org/topics
 
 ## Contact
 
-- Email: hello@peptidebrand.com
-- Free consultation request form: https://peptidebrand.com/quote
+- Email: hello@peptidebrand.org
+- Free consultation request form: https://peptidebrand.org/quote

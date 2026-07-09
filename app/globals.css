@@ -8,6 +8,7 @@ html { scroll-behavior: smooth; background: #ffffff; }
 body { margin: 0; background: #ffffff; color: #101828; font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif; }
 a { text-decoration: none; }
 ::selection { background: #1d4ed8; color: #ffffff; }
+body.mobile-nav-open .sticky-mobile-cta { display: none; }
 
 @layer base {
   h1, h2, h3, h4 { font-family: var(--font-display), Georgia, Cambria, serif; letter-spacing: -0.02em; font-weight: 600; }

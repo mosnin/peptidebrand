@@ -7,7 +7,7 @@ import type { SEOPage } from '@/lib/seo-page-map';
 export function PageHero({ page, eyebrow }: { page: SEOPage; eyebrow: string }) {
   return (
     <section className="relative overflow-hidden border-b border-slate-200 bg-mist py-16 text-navy sm:py-24">
-      <Image src={brandAssets.molecularMap} alt="" fill priority sizes="100vw" className="object-cover opacity-[0.05]" />
+      <Image src={brandAssets.molecularMap} alt="" fill priority sizes="100vw" className="object-cover opacity-[0.05]" quality={90} />
       <div className="absolute inset-0 bg-gradient-to-b from-white via-white/90 to-white/60" />
       <Container className="relative mx-auto max-w-3xl text-center">
         <p className="text-sm font-bold uppercase tracking-[0.3em] text-blue">{eyebrow}</p>

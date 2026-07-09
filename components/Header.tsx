@@ -20,8 +20,10 @@ export function Header() {
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    document.body.classList.toggle('mobile-nav-open', mobileOpen);
     return () => {
       document.body.style.overflow = '';
+      document.body.classList.remove('mobile-nav-open');
     };
   }, [mobileOpen]);
 
@@ -108,7 +110,7 @@ export function Header() {
       </Container>
 
       {mobileOpen && (
-        <div id="mobile-navigation" className="fixed left-0 right-0 top-20 z-40 h-[calc(100vh-5rem)] overflow-y-auto bg-white lg:hidden" aria-label="Mobile navigation">
+        <div id="mobile-navigation" className="fixed left-0 right-0 top-20 z-40 h-[calc(100vh-5rem)] overflow-y-auto bg-white pb-24 lg:hidden" aria-label="Mobile navigation">
           <Container className="grid gap-8 py-8">
             <div className="rounded-3xl border border-slate-200 bg-mist p-5">
               <p className="text-sm font-black text-navy">100% free 1-on-1 consultations</p>

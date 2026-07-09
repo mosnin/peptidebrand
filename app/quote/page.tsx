@@ -13,7 +13,7 @@ export default function QuotePage() {
   return (
     <>
       <section className="relative overflow-hidden bg-navy py-20 text-white sm:py-28">
-        <Image src={brandAssets.molecularMap} alt="Abstract lab-created molecular research peptide chain rendering" fill priority sizes="100vw" className="object-cover" />
+        <Image src={brandAssets.molecularMap} alt="Abstract lab-created molecular research peptide chain rendering" fill priority sizes="100vw" className="object-cover" quality={90} />
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/50" />
         <Container className="relative max-w-3xl">
           <p className="text-sm font-bold uppercase tracking-[0.3em] text-white/70">100% free consultation</p>

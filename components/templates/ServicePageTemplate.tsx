@@ -55,7 +55,7 @@ export function ServicePageTemplate({ page }: { page: SEOPage }) {
           </div>
           {contextImage && (
             <div className="overflow-hidden rounded-3xl border border-slate-200 shadow-soft">
-              <Image src={contextImage.src} alt={contextImage.alt} width={1200} height={900} className="h-auto w-full object-cover" />
+              <Image src={contextImage.src} alt={contextImage.alt} width={1200} height={900} className="h-auto w-full object-cover" quality={90} />
             </div>
           )}
         </Container>
