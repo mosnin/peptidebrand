@@ -13,11 +13,19 @@
     "audit:production": "node --experimental-strip-types scripts/production-audit.ts"
   },
   "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.24.0",
+    "motion": "^12.42.2",
     "next": "^15.5.0",
+    "radix-ui": "^1.6.2",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "recharts": "^3.9.2",
+    "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
     "@types/node": "^24.0.0",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
@@ -26,8 +34,7 @@
     "eslint-config-next": "^15.5.0",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5.8.0",
-    "@eslint/eslintrc": "^3.3.1"
+    "typescript": "^5.8.0"
   },
   "packageManager": "npm@11.4.2",
   "engines": {

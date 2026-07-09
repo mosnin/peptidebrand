@@ -20,3 +20,12 @@ a { text-decoration: none; }
   .technical-grid { background-image: linear-gradient(rgba(16,24,40,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(16,24,40,0.05) 1px, transparent 1px); background-size: 44px 44px; }
   .dark-section { background: linear-gradient(180deg, #f5f7fa 0%, #ffffff 100%); color: #101828; border-top: 1px solid rgba(16,24,40,0.08); border-bottom: 1px solid rgba(16,24,40,0.08); }
 }
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
