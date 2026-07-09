@@ -15,7 +15,6 @@ export function Footer() {
             <p className="mt-4 font-display text-2xl font-bold text-navy">{siteConfig.name}</p>
             <p className="mt-4 max-w-md text-sm leading-6 text-slate-600">{researchDisclaimer}</p>
             <div className="mt-4 space-y-1 text-sm text-slate-600">
-              <a href={`tel:${siteConfig.phone}`} className="block hover:text-blue">{siteConfig.phoneDisplay}</a>
               <a href={`mailto:${siteConfig.email}`} className="block hover:text-blue">{siteConfig.email}</a>
               {siteConfig.publicLocation && <p>{siteConfig.publicLocation.streetAddress}, {siteConfig.publicLocation.addressLocality}, {siteConfig.publicLocation.addressRegion}</p>}
             </div>
