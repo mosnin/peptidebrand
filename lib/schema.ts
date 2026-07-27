@@ -65,6 +65,7 @@ export function professionalServiceSchema() {
     name: siteConfig.name,
     url: siteConfig.url,
     email: siteConfig.email,
-    address: siteConfig.publicLocation,
+    telephone: siteConfig.phone,
+    address: { '@type': 'PostalAddress', ...siteConfig.publicLocation },
   };
 }

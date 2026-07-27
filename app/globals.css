@@ -2,20 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { color-scheme: dark; --radius: 1.5rem; --font-display: Georgia, Cambria, serif; }
+:root { color-scheme: light; --radius: 1.5rem; --font-display: Georgia, Cambria, serif; }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; background: #030712; }
-body { margin: 0; background: #030712; color: #e5eef8; font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif; }
+html { scroll-behavior: smooth; background: #ffffff; }
+body { margin: 0; background: #ffffff; color: #101828; font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif; }
 a { text-decoration: none; }
-::selection { background: #4c8dff; color: #030712; }
+::selection { background: #1d4ed8; color: #ffffff; }
+body.mobile-nav-open .sticky-mobile-cta { display: none; }
 
 @layer base {
-  h1, h2 { letter-spacing: -0.035em; }
-  :focus-visible { outline: 3px solid #4c8dff; outline-offset: 3px; }
+  h1, h2, h3, h4 { font-family: var(--font-display), Georgia, Cambria, serif; letter-spacing: -0.02em; font-weight: 600; }
+  h1 { letter-spacing: -0.03em; }
+  :focus-visible { outline: 3px solid #1d4ed8; outline-offset: 3px; }
 }
 
 @layer components {
-  .glass-panel { border: 1px solid rgba(255,255,255,0.12); background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04)); box-shadow: 0 24px 80px rgba(0,0,0,0.32); backdrop-filter: blur(18px); }
-  .technical-grid { background-image: linear-gradient(rgba(148,197,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(148,197,255,0.08) 1px, transparent 1px); background-size: 44px 44px; }
-  .dark-section { background: radial-gradient(circle at 20% 20%, rgba(76,141,255,0.14), transparent 34%), linear-gradient(135deg, #07111f, #030712); color: #f8fbff; }
+  .glass-panel { border: 1px solid rgba(16,24,40,0.08); background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(245,247,250,0.9)); box-shadow: 0 20px 60px rgba(16,24,40,0.08); backdrop-filter: blur(18px); }
+  .technical-grid { background-image: linear-gradient(rgba(16,24,40,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(16,24,40,0.05) 1px, transparent 1px); background-size: 44px 44px; }
+  .dark-section { background: linear-gradient(180deg, #f5f7fa 0%, #ffffff 100%); color: #101828; border-top: 1px solid rgba(16,24,40,0.08); border-bottom: 1px solid rgba(16,24,40,0.08); }
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
 }

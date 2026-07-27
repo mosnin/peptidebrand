@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { brandAssets } from '@/lib/assets';
 
 const badges = [
@@ -10,7 +11,7 @@ export function TrustBadges({ className = '' }: { className?: string }) {
   return (
     <div className={`flex flex-wrap items-center gap-6 ${className}`}>
       {badges.map((badge) => (
-        <img key={badge.alt} src={badge.src} alt={badge.alt} width={96} height={96} className="h-16 w-16 sm:h-20 sm:w-20" />
+        <Image key={badge.alt} src={badge.src} alt={badge.alt} width={1254} height={1254} sizes="80px" className="h-16 w-16 sm:h-20 sm:w-20" />
       ))}
     </div>
   );

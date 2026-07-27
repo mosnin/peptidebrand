@@ -14,7 +14,7 @@ export const serviceMegaMenu: NavGroup[] = [
     title: 'Sourcing & Supplier Network',
     links: [
       { href: '/wholesale-peptides', label: 'Wholesale Peptides', description: 'Bulk inventory sourcing from vetted USA-based manufacturers.' },
-      { href: '/research-peptide-supplier', label: 'Manufacturer Network', description: "We're connected with hundreds of manufacturers — free to connect, always." },
+      { href: '/research-peptide-supplier', label: 'Manufacturer Network', description: "We're connected with hundreds of manufacturers. Free to connect, always." },
     ],
   },
   {
@@ -37,5 +37,5 @@ export const resourceLinks: NavLink[] = [
   { href: '/resources/how-to-start-a-peptide-brand', label: 'How to start a peptide brand', description: 'A research-use launch guide for sourcing, testing, COAs, packaging, and fulfillment.' },
   { href: '/resources/peptide-supplier-checklist', label: 'Peptide supplier checklist', description: 'A due diligence checklist for comparing research peptide manufacturers.' },
   { href: '/resources/what-is-a-peptide-coa', label: 'What is a peptide COA', description: 'A plain-language guide to certificate of analysis records and review workflows.' },
-  { href: '/topics', label: 'All topics', description: 'Browse the full research peptide sourcing topic library.' },
+  { href: '/topics', label: 'Sourcing guides by compound', description: 'Compound-specific sourcing guides for research peptide brands.' },
 ];

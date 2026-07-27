@@ -1,15 +1,17 @@
 import type { Metadata } from 'next';
+import { FlaskConical, MapPinned, ShieldCheck, Tags, UsersRound, Warehouse } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/Button';
 import { Container } from '@/components/Container';
+import { CTASection } from '@/components/CTASection';
 import { FAQSection } from '@/components/FAQSection';
 import { LeadForm } from '@/components/LeadForm';
 import { ProcessTimeline } from '@/components/ProcessTimeline';
 import { SEOJsonLd } from '@/components/SEOJsonLd';
 import { Section } from '@/components/Section';
-import { StatCard } from '@/components/StatCard';
-import { TrustBadges } from '@/components/TrustBadges';
+import { FadeIn } from '@/components/motion/FadeIn';
+import { QualityCheckpointsChart } from '@/components/ui/QualityCheckpointsChart';
 import { brandAssets } from '@/lib/assets';
 import { serviceMegaMenu } from '@/lib/nav';
 import { createMetadata, organizationSchema, websiteSchema } from '@/lib/seo';
@@ -22,10 +24,26 @@ export const metadata: Metadata = createMetadata({
   path: '/',
 });
 
-const trustItems = ['USA-based manufacturers', 'Lab-created & tested', '99%+ purity verified', 'Free 1-on-1 consultations', 'White label & private label', 'Hundreds of vetted suppliers'];
+const stats = [
+  { value: '99%+', label: 'Purity, HPLC & LCMS verified' },
+  { value: '$0', label: 'Cost for any consultation' },
+  { value: '100s', label: 'Vetted USA manufacturers' },
+  { value: '1-on-1', label: 'Dedicated support, every account' },
+];
+
+const trustItems = [
+  { icon: MapPinned, label: 'USA-based manufacturers' },
+  { icon: FlaskConical, label: 'Lab-created & tested' },
+  { icon: ShieldCheck, label: '99%+ purity verified' },
+  { icon: UsersRound, label: 'Free 1-on-1 consultations' },
+  { icon: Tags, label: 'White label & private label' },
+  { icon: Warehouse, label: 'Hundreds of vetted suppliers' },
+];
+
+const proofPoints = ['No cost to connect with a supplier', 'Only USA-based labs and manufacturers', '99%+ purity, lab-verified', 'Full white label brand creation'];
 
 const process = [
-  { title: 'Free consultation', body: 'Tell us what you want to launch or source. Every consultation is 100% free — no cost, ever, to connect with a supplier.' },
+  { title: 'Free consultation', body: 'Tell us what you want to launch or source. Every consultation is 100% free. No cost, ever, to connect with a supplier.' },
   { title: 'Manufacturer match', body: 'We connect you with the right USA-based, lab-created peptide manufacturers from our network of hundreds of partners.' },
   { title: 'Verify quality', body: 'Review COAs, HPLC and LCMS testing records, and confirm 99%+ purity before committing to inventory.' },
   { title: 'Brand it', body: 'White label or private label your catalog with custom packaging, labels, and research-use-only positioning.' },
@@ -56,7 +74,7 @@ const faqItems = [
   },
   {
     question: 'What kind of support do I get after the introduction?',
-    answer: 'You get 1-on-1 customer support from our team for reorders, new product sourcing, documentation questions, and ongoing brand growth — not a ticket queue.',
+    answer: 'You get 1-on-1 customer support from our team for reorders, new product sourcing, documentation questions, and ongoing brand growth. Not a ticket queue.',
   },
 ];
 
@@ -64,78 +82,81 @@ export default function HomePage() {
   return (
     <>
       <SEOJsonLd data={[organizationSchema(), websiteSchema(), faqSchema(faqItems)]} />
-      <section className="relative overflow-hidden bg-navy text-white">
-        <Image src={brandAssets.heroScientists} alt="USA-based laboratory preparing research peptide vials for testing and quality verification" fill priority sizes="100vw" className="object-cover opacity-45" />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/60" />
-        <Container className="relative grid gap-12 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:py-28">
-          <div>
-            <p className="text-sm font-bold uppercase tracking-[0.3em] text-cyan">USA-based • Lab-created • 100% free consultations</p>
-            <h1 className="mt-5 max-w-5xl font-display text-5xl font-bold tracking-tight sm:text-7xl">Launch a USA-made peptide brand with 99%+ pure, lab-tested research peptides.</h1>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-white/75">We connect research-use brands with hundreds of vetted, USA-based peptide manufacturers for wholesale sourcing, white label, and full private label brand creation — with free 1-on-1 support from day one.</p>
+
+      <section className="relative overflow-hidden bg-navy">
+        <Image src={brandAssets.heroBackground} alt="Glowing map of connected USA-based peptide manufacturing partners linked to molecular research imagery" fill priority sizes="100vw" className="object-cover" quality={90} />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/10 to-transparent" />
+        <Container className="relative py-24 lg:py-32">
+          <FadeIn className="max-w-3xl">
+            <p className="text-sm font-bold uppercase tracking-[0.3em] text-white/70">USA-based. Lab-created. 100% free consultations.</p>
+            <h1 className="mt-5 font-display text-5xl font-semibold tracking-tight text-white sm:text-7xl">USA-made peptide brands, backed by 99%+ purity.</h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/75">We connect research-use brands with hundreds of vetted, USA-based peptide manufacturers for wholesale sourcing, white label, and full private label brand creation, with free 1-on-1 support from day one.</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button href="#lead-capture">Get a free consultation</Button>
-              <Button href="/research-peptide-supplier" variant="secondary">See our manufacturer network</Button>
+              <Button href="/research-peptide-supplier" variant="onDark">See our manufacturer network</Button>
             </div>
-            <p className="mt-8 max-w-3xl text-sm text-white/70">All peptide-related planning on this site is for laboratory research-use-only supply chains, documentation, sourcing, packaging, and fulfillment operations.</p>
-            <TrustBadges className="mt-10" />
-          </div>
-          <div className="grid gap-5">
-            <div className="grid gap-4 sm:grid-cols-2">
-              <StatCard value="99%+" label="Purity, HPLC & LCMS verified" />
-              <StatCard value="$0" label="Cost for any consultation" />
-              <StatCard value="100s" label="Vetted USA manufacturers" />
-              <StatCard value="1-on-1" label="Dedicated support, every account" />
-            </div>
-            <div className="glass-panel overflow-hidden rounded-4xl">
-              <Image src={brandAssets.bottle} alt="Unbranded research peptide vial ready for white label and private label customization" width={640} height={640} className="mx-auto h-64 w-auto object-contain py-6" />
-            </div>
-          </div>
+          </FadeIn>
+          <FadeIn delay={0.15} className="mt-14 grid gap-4 border-t border-white/10 pt-10 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-white/10">
+            {stats.map((stat) => (
+              <div key={stat.label} className="lg:px-8 lg:first:pl-0">
+                <p className="font-display text-4xl font-semibold text-white">{stat.value}</p>
+                <p className="mt-1 text-sm text-white/60">{stat.label}</p>
+              </div>
+            ))}
+          </FadeIn>
         </Container>
       </section>
 
-      <section className="border-y border-slate-200 bg-white py-5">
+      <section className="border-b border-slate-200 bg-white py-10">
         <Container>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-6 lg:divide-x lg:divide-slate-200">
             {trustItems.map((item) => (
-              <div key={item} className="rounded-full bg-mist px-4 py-3 text-center text-sm font-bold text-navy">{item}</div>
+              <div key={item.label} className="flex items-center gap-3 lg:flex-col lg:items-center lg:gap-2 lg:px-4 lg:text-center lg:first:pl-0">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue/10 text-blue">
+                  <item.icon size={20} strokeWidth={2} aria-hidden="true" />
+                </span>
+                <p className="text-sm font-bold text-navy">{item.label}</p>
+              </div>
             ))}
           </div>
         </Container>
       </section>
 
-      <Section className="dark-section">
+      <Section>
         <Container className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div>
-            <p className="text-sm font-bold uppercase tracking-[0.25em] text-cyan">Why founders work with us</p>
-            <h2 className="mt-3 font-display text-4xl font-bold text-white sm:text-5xl">Sourcing shouldn&apos;t cost you anything until you&apos;re ready to buy.</h2>
-            <p className="mt-5 text-xl leading-9 text-white/70">Most peptide brand founders are not blocked by demand — they&apos;re blocked by trust. Which manufacturer is actually USA-based? Who tests to 99%+ purity? Who will take a call without a fee attached? We solve that with a free, 1-on-1 introduction to the right partner in a network of hundreds of manufacturers.</p>
+          <FadeIn>
+            <p className="text-sm font-bold uppercase tracking-[0.25em] text-blue">Why founders work with us</p>
+            <h2 className="mt-3 font-display text-4xl font-semibold text-navy sm:text-5xl">Sourcing shouldn&apos;t cost you anything until you&apos;re ready to buy.</h2>
+            <p className="mt-5 text-xl leading-9 text-slate-600">Most peptide brand founders are not blocked by demand. They&apos;re blocked by trust. Which manufacturer is actually USA-based? Who tests to 99%+ purity? Who will take a call without a fee attached? We solve that with a free, 1-on-1 introduction to the right partner in a network of hundreds of manufacturers.</p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              {['No cost to connect with a supplier', 'Only USA-based labs & manufacturers', '99%+ purity, lab-verified', 'Full white label brand creation'].map((item) => (
-                <div key={item} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-white/85">{item}</div>
+              {proofPoints.map((item) => (
+                <div key={item} className="rounded-2xl border border-slate-200 bg-mist px-4 py-3 text-sm font-semibold text-navy">{item}</div>
               ))}
             </div>
-          </div>
-          <div className="glass-panel overflow-hidden rounded-4xl p-4">
-            <Image src={brandAssets.peptideChain} alt="Molecular structure rendering representing lab-created, USA-tested research peptide chains" width={800} height={800} className="mx-auto h-80 w-auto object-contain" />
-          </div>
+          </FadeIn>
+          <FadeIn delay={0.1} className="glass-panel overflow-hidden rounded-4xl p-4">
+            <Image src={brandAssets.peptideChain} alt="Molecular structure rendering representing lab-created, USA-tested research peptide chains" width={800} height={800} className="mx-auto h-80 w-auto object-contain" quality={90} />
+          </FadeIn>
         </Container>
       </Section>
 
       <Section className="bg-mist">
         <Container>
-          <div className="max-w-3xl">
-            <p className="text-sm font-bold uppercase tracking-[0.25em] text-teal">Services</p>
-            <h2 className="mt-3 text-3xl font-black text-navy sm:text-4xl">From inventory sourcing to full brand creation — real pages for every service.</h2>
-            <p className="mt-4 text-lg leading-7 text-slate-600">No generic catch-all page. Explore the exact service you need, from white label brand creation to wholesale sourcing, lab testing, packaging, and fulfillment.</p>
-          </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {serviceMegaMenu.map((group) => (
-              <div key={group.title} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
-                <h3 className="text-lg font-black text-navy">{group.title}</h3>
-                <div className="mt-4 grid gap-3">
+          <FadeIn className="max-w-2xl">
+            <p className="text-sm font-bold uppercase tracking-[0.25em] text-blue">What we do</p>
+            <h2 className="mt-3 font-display text-4xl font-semibold text-navy sm:text-5xl">From inventory sourcing to full brand creation.</h2>
+            <p className="mt-4 text-lg leading-7 text-slate-600">No generic catch-all page. Explore the exact service you need, with a dedicated page for every step of the process.</p>
+          </FadeIn>
+          <div className="mt-12 border-t border-slate-200">
+            {serviceMegaMenu.map((group, index) => (
+              <div key={group.title} className="grid gap-6 border-b border-slate-200 py-10 lg:grid-cols-[100px_1fr_1.4fr]">
+                <span className="font-display text-3xl font-semibold text-blue">0{index + 1}</span>
+                <h3 className="font-display text-2xl font-semibold text-navy">{group.title}</h3>
+                <div className="grid gap-3 sm:grid-cols-2">
                   {group.links.map((link) => (
-                    <Link key={link.href} href={link.href} className="block rounded-2xl bg-mist p-3 transition hover:bg-teal/10">
-                      <span className="block text-sm font-bold text-teal">{link.label}</span>
+                    <Link key={link.href} href={link.href} className="block rounded-2xl bg-white p-4 shadow-soft transition hover:-translate-y-0.5 hover:shadow-glow">
+                      <span className="block text-sm font-bold text-blue">{link.label}</span>
                       <span className="mt-1 block text-xs leading-5 text-slate-600">{link.description}</span>
                     </Link>
                   ))}
@@ -146,47 +167,49 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section className="bg-navy text-white">
-        <Container className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div>
-            <p className="text-sm font-bold uppercase tracking-[0.25em] text-cyan">Full brand creation</p>
-            <h2 className="mt-3 font-display text-4xl font-bold sm:text-5xl">From &ldquo;your brand here&rdquo; to a shelf-ready catalog.</h2>
-            <p className="mt-5 text-lg leading-8 text-white/70">White label and private label programs include custom packaging, printed labels, lot codes, research-use-only disclaimers, and certificate of analysis access — built around USA-based manufacturing and 99%+ purity documentation.</p>
+      <Section>
+        <Container className="grid gap-12 lg:grid-cols-2 lg:items-center">
+          <FadeIn>
+            <p className="text-sm font-bold uppercase tracking-[0.25em] text-blue">Verified quality, real brand creation</p>
+            <h2 className="mt-3 font-display text-4xl font-semibold text-navy sm:text-5xl">99%+ purity and a shelf-ready catalog, documented every step.</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">White label and private label programs include custom packaging, printed labels, lot codes, research-use-only disclaimers, and certificate of analysis access, built around USA-based manufacturing and third-party purity testing.</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button href="/white-label-peptides">Explore white label</Button>
-              <Button href="/private-label-peptides" variant="secondary">Explore private label</Button>
+              <Button href="/peptide-lab-testing" variant="secondary">See lab testing support</Button>
             </div>
-          </div>
-          <div className="glass-panel overflow-hidden rounded-4xl p-3">
-            <Image src={brandAssets.whiteLabelInventory} alt="White label peptide packaging, boxes, vials, and certificate of analysis ready for private label brand creation" width={1200} height={800} className="rounded-3xl object-cover" />
-          </div>
+          </FadeIn>
+          <FadeIn delay={0.1} className="grid grid-cols-2 gap-4">
+            <div className="row-span-2 overflow-hidden rounded-3xl border border-slate-200 shadow-soft">
+              <Image src={brandAssets.whiteLabelInventory} alt="White label peptide packaging, boxes, vials, and certificate of analysis ready for private label brand creation" width={700} height={900} className="h-full w-full object-cover" quality={90} />
+            </div>
+            <div className="overflow-hidden rounded-3xl border border-slate-200 shadow-soft">
+              <Image src={brandAssets.coaStack} alt="Certificate of analysis showing 99.7 percent peptide purity results from independent lab testing" width={700} height={440} className="h-full w-full object-cover" quality={90} />
+            </div>
+            <div className="overflow-hidden rounded-3xl border border-slate-200 shadow-soft">
+              <Image src={brandAssets.hplcInterface} alt="HPLC analysis dashboard confirming 99.12 percent research peptide purity with a pass result" width={700} height={440} className="h-full w-full object-cover" quality={90} />
+            </div>
+          </FadeIn>
         </Container>
       </Section>
 
       <Section>
-        <Container className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div className="order-2 grid gap-5 sm:grid-cols-2 lg:order-1">
-            <div className="overflow-hidden rounded-3xl border border-slate-200 shadow-soft">
-              <Image src={brandAssets.coaStack} alt="Certificate of analysis showing 99.7 percent peptide purity results from independent lab testing" width={900} height={600} className="h-full w-full object-cover" />
-            </div>
-            <div className="overflow-hidden rounded-3xl border border-slate-200 shadow-soft">
-              <Image src={brandAssets.hplcInterface} alt="HPLC analysis dashboard confirming 99.12 percent research peptide purity with a pass result" width={900} height={600} className="h-full w-full object-cover" />
-            </div>
-          </div>
-          <div className="order-1 lg:order-2">
-            <p className="text-sm font-bold uppercase tracking-[0.25em] text-teal">Quality you can verify</p>
-            <h2 className="mt-3 text-3xl font-black text-navy sm:text-4xl">99%+ purity, backed by HPLC, LCMS, and a certificate of analysis for every batch.</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-600">We only work with the highest-quality laboratories and manufacturers based in the USA. Every recommended partner supports batch-level COAs, third-party testing references, and documentation you can hand to your own customers with confidence.</p>
-            <Button href="/peptide-lab-testing" className="mt-6">See lab testing support</Button>
-          </div>
+        <Container className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <FadeIn>
+            <p className="text-sm font-bold uppercase tracking-[0.25em] text-blue">Documented every step</p>
+            <h2 className="mt-3 font-display text-3xl font-semibold text-navy sm:text-4xl">What we verify in every batch.</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">Every sourcing engagement runs through a documented checklist across five stages, from initial supplier vetting to final fulfillment handoff, so nothing gets skipped as your catalog scales.</p>
+          </FadeIn>
+          <FadeIn delay={0.1} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
+            <QualityCheckpointsChart />
+          </FadeIn>
         </Container>
       </Section>
 
-      <Section className="bg-midnight text-white">
+      <Section className="bg-mist">
         <Container>
-          <div className="max-w-3xl">
-            <p className="text-sm font-bold uppercase tracking-[0.25em] text-cyan">Process</p>
-            <h2 className="mt-3 font-display text-4xl font-bold sm:text-5xl">A free, guided path from first call to fulfillment.</h2>
+          <div className="max-w-2xl">
+            <p className="text-sm font-bold uppercase tracking-[0.25em] text-blue">Process</p>
+            <h2 className="mt-3 font-display text-4xl font-semibold text-navy sm:text-5xl">A free, guided path from first call to fulfillment.</h2>
           </div>
           <div className="mt-10">
             <ProcessTimeline steps={process} />
@@ -194,50 +217,42 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <section id="lead-capture" className="dark-section py-16 text-white sm:py-24">
-        <Container className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-          <div>
-            <p className="text-sm font-bold uppercase tracking-[0.25em] text-cyan">100% free consultation</p>
-            <h2 className="mt-3 text-3xl font-black sm:text-4xl">Tell us what you want to source, brand, or launch.</h2>
-            <p className="mt-4 text-lg leading-8 text-white/70">Use the form for wholesale sourcing, white label or private label brand creation, lab testing questions, packaging, or fulfillment planning. There is never a cost to connect with a manufacturer in our network, and you get 1-on-1 support from the first reply.</p>
-          </div>
-          <LeadForm dark />
-        </Container>
-      </section>
-
-      <Section className="bg-midnight text-white">
+      <Section>
         <Container className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.25em] text-cyan">USA-based supply</p>
-            <h2 className="mt-3 font-display text-4xl font-bold sm:text-5xl">Cold-chain-ready inventory from domestic manufacturers.</h2>
-            <p className="mt-5 text-lg leading-8 text-white/70">Wholesale sourcing connects you directly to USA-based manufacturing capacity so you can scale a catalog without guessing where inventory actually comes from.</p>
+            <p className="text-sm font-bold uppercase tracking-[0.25em] text-blue">USA-based supply</p>
+            <h2 className="mt-3 font-display text-4xl font-semibold text-navy sm:text-5xl">Cold-chain-ready inventory from domestic manufacturers.</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">Wholesale sourcing connects you directly to USA-based manufacturing capacity so you can scale a catalog without guessing where inventory actually comes from.</p>
             <Button href="/wholesale-peptides" className="mt-6">Explore wholesale sourcing</Button>
           </div>
           <div className="glass-panel overflow-hidden rounded-4xl p-3">
-            <Image src={brandAssets.vialsColdStorage} alt="Rows of research peptide vials in cold storage at a USA-based manufacturing facility" width={1200} height={800} className="rounded-3xl object-cover" />
+            <Image src={brandAssets.vialsColdStorage} alt="Rows of research peptide vials in cold storage at a USA-based manufacturing facility" width={1200} height={800} className="rounded-3xl object-cover" quality={90} />
           </div>
         </Container>
       </Section>
 
-      <Section className="bg-midnight text-white">
-        <Container className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+      <section id="lead-capture" className="border-y border-slate-200 bg-mist py-16 sm:py-24">
+        <Container className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.25em] text-cyan">FAQ</p>
-            <h2 className="mt-3 font-display text-4xl font-bold text-white sm:text-5xl">Research peptide sourcing questions, answered plainly.</h2>
+            <p className="text-sm font-bold uppercase tracking-[0.25em] text-blue">100% free consultation</p>
+            <h2 className="mt-3 font-display text-3xl font-semibold text-navy sm:text-4xl">Tell us what you want to source, brand, or launch.</h2>
+            <p className="mt-4 text-lg leading-8 text-slate-600">Use the form for wholesale sourcing, white label or private label brand creation, lab testing questions, packaging, or fulfillment planning. There is never a cost to connect with a manufacturer in our network, and you get 1-on-1 support from the first reply.</p>
           </div>
-          <FAQSection items={faqItems} dark />
-        </Container>
-      </Section>
-
-      <section className="bg-teal py-16 text-white">
-        <Container className="grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
-          <div>
-            <h2 className="text-3xl font-black">Get a free sourcing consultation.</h2>
-            <p className="mt-3 max-w-2xl text-white/80">Start with your catalog goals, volume, and timeline — we&apos;ll match you with the right USA-based manufacturer at no cost.</p>
-          </div>
-          <Button href="#lead-capture" variant="secondary">Get a free consultation</Button>
+          <LeadForm />
         </Container>
       </section>
+
+      <Section>
+        <Container className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.25em] text-blue">FAQ</p>
+            <h2 className="mt-3 font-display text-4xl font-semibold text-navy sm:text-5xl">Research peptide sourcing questions, answered plainly.</h2>
+          </div>
+          <FAQSection items={faqItems} />
+        </Container>
+      </Section>
+
+      <CTASection />
     </>
   );
 }

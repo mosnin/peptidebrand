@@ -12,8 +12,8 @@ export function RelatedLinks({ page }: { page: SEOPage }) {
       <h2 className="text-2xl font-black text-navy">Related research-use planning pages</h2>
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
         {related.map((item) => (
-          <Link key={item.path} href={item.path} className="rounded-2xl bg-mist p-4 transition hover:bg-teal/10">
-            <span className="block text-sm font-bold text-teal">{item.targetKeyword}</span>
+          <Link key={item.path} href={item.path} className="rounded-2xl bg-mist p-4 transition hover:bg-blue/10">
+            <span className="block text-xs font-bold uppercase tracking-[0.16em] text-blue">{item.kind === 'resource' ? 'Guide' : 'Service'}</span>
             <span className="mt-1 block font-semibold text-navy">{item.h1}</span>
           </Link>
         ))}

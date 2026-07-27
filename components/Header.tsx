@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 import { Container } from './Container';
 import { Logo } from './Logo';
@@ -20,8 +21,10 @@ export function Header() {
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    document.body.classList.toggle('mobile-nav-open', mobileOpen);
     return () => {
       document.body.style.overflow = '';
+      document.body.classList.remove('mobile-nav-open');
     };
   }, [mobileOpen]);
 
@@ -67,39 +70,48 @@ export function Header() {
                 Services
                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true" className={`transition ${servicesOpen ? 'rotate-180' : ''}`}><path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg>
               </button>
-              {servicesOpen && (
-                <div className="absolute left-1/2 top-full z-40 mt-3 w-[min(90vw,880px)] -translate-x-1/2 rounded-3xl border border-slate-200 bg-white p-6 shadow-glow" role="menu">
-                  <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                    {serviceMegaMenu.map((group) => (
-                      <div key={group.title}>
-                        <p className="text-xs font-bold uppercase tracking-[0.16em] text-teal">{group.title}</p>
-                        <div className="mt-3 grid gap-3">
-                          {group.links.map((link) => (
-                            <Link key={link.href} href={link.href} onClick={() => setServicesOpen(false)} className="block rounded-2xl p-2 transition hover:bg-mist">
-                              <span className="block text-sm font-bold text-navy">{link.label}</span>
-                              <span className="mt-0.5 block text-xs leading-5 text-slate-500">{link.description}</span>
-                            </Link>
-                          ))}
+              <AnimatePresence>
+                {servicesOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                    transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute left-1/2 top-full z-40 mt-3 w-[min(90vw,880px)] -translate-x-1/2 rounded-3xl border border-slate-200 bg-white p-6 shadow-glow"
+                    role="menu"
+                  >
+                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                      {serviceMegaMenu.map((group) => (
+                        <div key={group.title}>
+                          <p className="text-xs font-bold uppercase tracking-[0.16em] text-teal">{group.title}</p>
+                          <div className="mt-3 grid gap-3">
+                            {group.links.map((link) => (
+                              <Link key={link.href} href={link.href} onClick={() => setServicesOpen(false)} className="block rounded-2xl p-2 transition hover:bg-mist">
+                                <span className="block text-sm font-bold text-navy">{link.label}</span>
+                                <span className="mt-0.5 block text-xs leading-5 text-slate-500">{link.description}</span>
+                              </Link>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-navy px-6 py-5 text-white">
-                    <div>
-                      <p className="text-sm font-black">100% free 1-on-1 consultations — every time.</p>
-                      <p className="mt-1 text-xs text-white/70">USA-based manufacturers only. 99%+ purity. No cost to connect with a supplier.</p>
+                      ))}
                     </div>
-                    <Link href="/quote" onClick={() => setServicesOpen(false)} className="shrink-0 rounded-full bg-cyan px-5 py-2.5 text-sm font-black text-midnight transition hover:bg-white">Get a Free Quote</Link>
-                  </div>
-                </div>
-              )}
+                    <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-mist px-6 py-5">
+                      <div>
+                        <p className="text-sm font-black text-navy">100% free 1-on-1 consultations, every time.</p>
+                        <p className="mt-1 text-xs text-slate-600">USA-based manufacturers only. 99%+ purity. No cost to connect with a supplier.</p>
+                      </div>
+                      <Link href="/quote" onClick={() => setServicesOpen(false)} className="shrink-0 rounded-full bg-blue px-5 py-2.5 text-sm font-black text-white transition hover:bg-navy">Get a Free Quote</Link>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
             {simpleNav.map(([label, href]) => (
               <Link key={href} href={href} className="rounded-full px-4 py-2 text-sm font-bold text-ink transition hover:bg-mist hover:text-blue">{label}</Link>
             ))}
           </nav>
           <div className="hidden items-center gap-3 lg:flex">
-            <Link href="/quote" className="rounded-full border border-blue/20 bg-blue px-5 py-2.5 text-sm font-black text-white shadow-glow transition hover:-translate-y-0.5 hover:bg-teal">Get a Free Quote</Link>
+            <Link href="/quote" className="rounded-full border border-blue bg-blue px-5 py-2.5 text-sm font-black text-white shadow-glow transition hover:-translate-y-0.5 hover:bg-navy">Get a Free Quote</Link>
           </div>
           <button type="button" className="rounded-full border border-slate-200 px-4 py-2 text-sm font-bold text-navy lg:hidden" onClick={() => setMobileOpen((value) => !value)} aria-expanded={mobileOpen} aria-controls="mobile-navigation">
             {mobileOpen ? 'Close' : 'Menu'}
@@ -107,12 +119,21 @@ export function Header() {
         </div>
       </Container>
 
-      {mobileOpen && (
-        <div id="mobile-navigation" className="fixed left-0 right-0 top-20 z-40 h-[calc(100vh-5rem)] overflow-y-auto bg-white lg:hidden" aria-label="Mobile navigation">
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            id="mobile-navigation"
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed left-0 right-0 top-20 z-40 h-[calc(100vh-5rem)] overflow-y-auto bg-white pb-24 lg:hidden"
+            aria-label="Mobile navigation"
+          >
           <Container className="grid gap-8 py-8">
-            <div className="rounded-3xl bg-navy p-5 text-white">
-              <p className="text-sm font-black">100% free 1-on-1 consultations</p>
-              <p className="mt-1 text-xs text-white/70">USA-based manufacturers, 99%+ purity, hundreds of vetted partners — free to connect, always.</p>
+            <div className="rounded-3xl border border-slate-200 bg-mist p-5">
+              <p className="text-sm font-black text-navy">100% free 1-on-1 consultations</p>
+              <p className="mt-1 text-xs text-slate-600">USA-based manufacturers, 99%+ purity, hundreds of vetted partners. Free to connect, always.</p>
             </div>
             {serviceMegaMenu.map((group) => (
               <div key={group.title}>
@@ -139,10 +160,11 @@ export function Header() {
                 <Link key={href} href={href} onClick={() => setMobileOpen(false)} className="rounded-2xl px-4 py-3 text-base font-bold text-navy transition hover:bg-mist">{label}</Link>
               ))}
             </div>
-            <Link href="/quote" onClick={() => setMobileOpen(false)} className="rounded-full bg-blue px-5 py-4 text-center text-base font-black text-white shadow-glow">Get a Free Quote</Link>
+            <Link href="/quote" onClick={() => setMobileOpen(false)} className="rounded-full bg-blue px-5 py-4 text-center text-base font-black text-white shadow-glow hover:bg-navy">Get a Free Quote</Link>
           </Container>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
